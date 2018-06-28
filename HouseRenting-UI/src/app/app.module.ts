@@ -8,8 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AdminComponent } from './admin/admin.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
-import { SignupComponent } from './user/signup/signup.component';
-import { SigninComponent } from './user/signin/signin.component';
+import { SignupComponent } from './users/signup/signup.component';
+import { SigninComponent } from './users/signin/signin.component';
 
 @NgModule({
   declarations: [
