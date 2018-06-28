@@ -10,6 +10,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { SignupComponent } from './users/signup/signup.component';
 import { SigninComponent } from './users/signin/signin.component';
+import { UsersRoutingModule } from './users/users-routing.module';
+import { ViewProfileComponent } from './users/view-profile/view-profile.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { SigninComponent } from './users/signin/signin.component';
     NavbarComponent,
     AdminComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    ViewProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    UsersRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
