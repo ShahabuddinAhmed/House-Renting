@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AdminComponent } from './admin/admin.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
+import { SignupComponent } from './user/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AdminRoutingModule } from './admin/admin-routing.module';
     FooterComponent,
     HomeComponent,
     NavbarComponent,
-    AdminComponent
+    AdminComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
