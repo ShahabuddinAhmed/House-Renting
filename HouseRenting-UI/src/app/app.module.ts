@@ -8,10 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AdminComponent } from './admin/admin.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
-import { SignupComponent } from './users/signup/signup.component';
-import { SigninComponent } from './users/signin/signin.component';
 import { UsersRoutingModule } from './users/users-routing.module';
-import { ViewProfileComponent } from './users/view-profile/view-profile.component';
 import { UsersModule } from './users/users.module';
 
 @NgModule({
@@ -20,10 +17,7 @@ import { UsersModule } from './users/users.module';
     FooterComponent,
     HomeComponent,
     NavbarComponent,
-    AdminComponent,
-    SignupComponent,
-    SigninComponent,
-    ViewProfileComponent
+    AdminComponent
   ],
   imports: [
     BrowserModule,
