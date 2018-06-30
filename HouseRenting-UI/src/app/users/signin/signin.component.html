@@ -1,3 +1,44 @@
-<p>
-  signin works!
-</p>
+<div class="container">
+    <br>
+    <br>
+  
+    <div class="row">
+      <div class="col-sm-4 offset-sm-4" style="padding: 0px;">
+        <mat-card class="signin-card">
+          <mat-card-content>
+            <div class="card-basic-content">
+              <h2 class="font-weight-bold">Welcome</h2>
+            </div>
+  
+            <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email" [formControl]="email">
+                <mat-hint>Enter user email!</mat-hint>
+                <mat-error *ngIf="email.hasError('required')">Email fileld is required</mat-error>
+                <mat-error *ngIf="email.hasError('maxlength')">Email atmost 30 charactes long.</mat-error>
+                <mat-error *ngIf="email.hasError('minlength')"> Email needs minimum 3 charactes</mat-error>
+              </mat-form-field>
+  
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Password" [formControl]="password" [type]="hide ? 'password' : 'text'">
+                <mat-icon style="font-size: 18px" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-hint>Enter user password!</mat-hint>
+                <mat-error *ngIf="password.hasError('required')"> password field is required</mat-error>
+                <mat-error *ngIf="password.hasError('maxlength')">password atmost 100 charactes long</mat-error>
+                <mat-error *ngIf="password.hasError('minlength')"> password needs minimum 6 charactes</mat-error>
+              </mat-form-field>
+              
+              <button [disabled]='!loginForm.valid' type="submit" mat-raised-button color="accent" class="form-button">SignIn</button>
+              
+            </form>
+          </mat-card-content>
+  
+          <mat-card-footer class="card-basic-content">
+            <p>Don’t have an account?
+              <a routerLink="/signup" routerLinkActive = "active">Sign Up</a>
+            </p>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+  </div>
