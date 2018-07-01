@@ -10,7 +10,6 @@ import { AppRoutingModule } from './/app-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { UsersRoutingModule } from './users/users-routing.module';
 import { UsersModule } from './users/users.module';
-
 @NgModule({
   declarations: [
     AppComponent,
