@@ -6,6 +6,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule, MatRippleModule, MatTooltipModule, MatMenuModule, MatToolbarModule, MatIconModule, MatCardModule, MatSidenavModule} from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UserComponent } from './user/user.component';
+
 
 @NgModule({
   imports: [
@@ -28,7 +30,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   declarations: [
     SignupComponent,
     SigninComponent,
-    ViewProfileComponent
+    ViewProfileComponent,
+    UserComponent
   ]
 })
 export class UsersModule { }
