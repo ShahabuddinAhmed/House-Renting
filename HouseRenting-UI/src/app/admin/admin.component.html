@@ -1,3 +1,57 @@
-<p>
-  admin works!
-</p>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
+      <mat-card class="signin-card">
+        <mat-card-content>
+          <div class="card-basic-content">
+            <h2 class="font-weight-bold">Add New Division</h2>
+          </div>
+          <form class="example-form" [formGroup]="newDivision" (ngSubmit)="onSubmitDivision()" novalidate>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Division" [formControl]="division">
+              <mat-hint>Enter new Division!</mat-hint>
+              <mat-error *ngIf="division.hasError('required')">Please etner a new Division!</mat-error>
+              <mat-error *ngIf="division.hasError('maxlength')">Division atmost 30 charactes long.</mat-error>
+              <mat-error *ngIf="division.hasError('minlength')"> Division needs minimum 3 charactes</mat-error>
+            </mat-form-field>
+            <button [disabled]='!newDivision.valid' type="submit" mat-raised-button color="primary" class="form-button">Submit</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
+      <mat-card class="signin-card">
+        <mat-card-content>
+          <div class="card-basic-content">
+            <h2 class="font-weight-bold">Add New Location</h2>
+          </div>
+          <form class="example-form" [formGroup]="newDistict" (ngSubmit)="onSubmitDistict()" novalidate>
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Division" [formControl]="selectDivision">
+                <mat-option *ngFor="let food of foods" [value]="food.value">{{food.value}}</mat-option>
+              </mat-select>
+              <mat-hint>Select a Division!</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Location" [formControl]="district">
+              <mat-hint>Enter new Location!</mat-hint>
+              <mat-error *ngIf="district.hasError('required')">Etner a new location!</mat-error>
+              <mat-error *ngIf="district.hasError('maxlength')">Location atmost 30 charactes long.</mat-error>
+              <mat-error *ngIf="district.hasError('minlength')"> Location needs minimum 3 charactes</mat-error>
+            </mat-form-field>
+            <button [disabled]='!newDistict.valid' type="submit" mat-raised-button color="primary" class="form-button">Submit</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
