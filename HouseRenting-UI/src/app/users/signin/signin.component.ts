@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
+  hide = true;
   public loginForm: FormGroup;
   public email: FormControl;
   public password: FormControl;
