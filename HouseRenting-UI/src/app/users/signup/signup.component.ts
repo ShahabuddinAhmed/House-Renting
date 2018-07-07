@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignupComponent implements OnInit {
 
   hide = true;
+  hide1 = true;
   public Register: FormGroup;
   public name: FormControl;
   public email: FormControl;
