@@ -8,6 +8,8 @@ import {MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule, 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditAdsComponent } from './edit-ads/edit-ads.component';
+import { ViewAdsComponent } from './view-ads/view-ads.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     SigninComponent,
     ViewProfileComponent,
     UserComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    EditAdsComponent,
+    ViewAdsComponent
   ]
 })
 export class UsersModule { }
