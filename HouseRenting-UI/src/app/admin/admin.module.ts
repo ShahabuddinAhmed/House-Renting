@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule, MatRippleModule, MatMenuModule, MatToolbarModule, MatIconModule, MatCardModule, MatSidenavModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule, MatRippleModule, MatMenuModule, MatToolbarModule, MatIconModule, MatCardModule, MatSidenavModule, MatTooltipModule, MatSelectModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
@@ -21,6 +21,7 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     MatSidenavModule,
     MatTooltipModule,
+    MatSelectModule,
     BrowserAnimationsModule
   ],
   declarations: [
