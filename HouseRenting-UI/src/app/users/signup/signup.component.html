@@ -3,7 +3,7 @@
     <br>
   
     <div class="row">
-      <div class="col-sm-4 offset-sm-4" style="padding: 0px;">
+      <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
         <mat-card class="signin-card">
           <mat-card-content>
             <div class="card-basic-content">
@@ -36,7 +36,7 @@
               </mat-form-field>
   
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Confirm Password" [formControl]="confirmPassword" [type]="hide ? 'password' : 'text'">
+                <input matInput placeholder="Confirm Password" [formControl]="confirmPassword" [type]="hide1 ? 'password' : 'text'">
                 <mat-icon style="font-size: 18px" matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility' : 'visibility_off'}}</mat-icon>
                 <mat-hint>Confirm Password!</mat-hint>
                 <mat-error *ngIf="confirmPassword.hasError('required')">ConfirmPassword field is required</mat-error>
