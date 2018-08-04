@@ -3,7 +3,7 @@
     <br>
   
     <div class="row">
-      <div class="col-sm-4 offset-sm-4" style="padding: 0px;">
+      <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
         <mat-card class="signin-card">
           <mat-card-content>
             <div class="card-basic-content">
@@ -28,7 +28,7 @@
                 <mat-error *ngIf="password.hasError('minlength')"> password needs minimum 6 charactes</mat-error>
               </mat-form-field>
               
-              <button [disabled]='!loginForm.valid' type="submit" mat-raised-button color="accent" class="form-button">SignIn</button>
+              <button [disabled]='!loginForm.valid' type="submit" mat-raised-button color="primary" class="form-button">Login</button>
               
             </form>
           </mat-card-content>
