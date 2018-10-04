@@ -15,8 +15,8 @@
                 <input matInput placeholder="Email" [formControl]="email">
                 <mat-hint>Enter user email!</mat-hint>
                 <mat-error *ngIf="email.hasError('required')">Email fileld is required</mat-error>
-                <mat-error *ngIf="email.hasError('maxlength')">Email atmost 30 charactes long.</mat-error>
-                <mat-error *ngIf="email.hasError('email')"> Email is not valid!</mat-error>
+                <mat-error *ngIf="email.hasError('maxlength')">Email atmost 60 charactes long.</mat-error>
+                <mat-error *ngIf="email.hasError('email') && !email.hasError('maxlength')"> Email is not valid!</mat-error>
                 <mat-error *ngIf="email.hasError('minlength') && !email.hasError('email')"> Email needs minimum 6 charactes</mat-error>
               </mat-form-field>
   
