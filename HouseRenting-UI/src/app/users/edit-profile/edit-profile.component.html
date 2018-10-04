@@ -36,7 +36,7 @@
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Confirm Password" [formControl]="confirmPassword" [type]="hide ? 'password' : 'text'">
+              <input matInput placeholder="Confirm Password" [formControl]="confirmPassword" [type]="hide1 ? 'password' : 'text'">
               <mat-icon style="font-size: 18px" matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility' : 'visibility_off'}}</mat-icon>
               <mat-hint>Confirm Password!</mat-hint>
               <mat-error *ngIf="confirmPassword.hasError('required')">ConfirmPassword field is required</mat-error>
@@ -44,7 +44,7 @@
               <mat-error *ngIf="confirmPassword.hasError('minlength')">ConfirmPassword needs minimum 6 charactes</mat-error>
             </mat-form-field>
 
-            <button [disabled]='!Register.valid' type="submit" mat-raised-button color="primary" class="form-button">SignUp</button>
+            <button [disabled]='!Register.valid' type="submit" mat-raised-button color="primary" class="form-button">Update Info</button>
 
           </form>
         </mat-card-content>
