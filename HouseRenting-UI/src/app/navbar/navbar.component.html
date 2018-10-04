@@ -1,19 +1,50 @@
-<header class="clearfix">
-    <div class="container">
-			<div class="header-left">
-          <a class="navbar-brand" href="#">Navbar</a>
-			</div>
-			<div class="header-right">
-				<label for="open">
-					<span class="hidden-desktop"></span>
-				</label>
-				<input type="checkbox" name="" id="open">
-				<nav>
-					<a routerLink="/">Home</a>
-					<a href="#">About</a>
-					<a routerLink="login">Login</a>
-					<a routerLink="register">Register</a>
-				</nav>
-			</div>
-		</div>
-	</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Disabled</a>
+      </li>
+	</ul>
+	<div class="form-inline my-2 my-lg-0">
+		<ul class="navbar-nav mr-sm-2">
+				<li class="nav-item mr-sm-2">
+						<a class="nav-link" href="#">Disabled</a>
+				</li>
+				<li class="nav-item my-2 my-sm-0">
+						<a class="nav-link" href="#">Disabled</a>
+				</li>
+		</ul>
+	</div>
+    <!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form> -->
+	
+	<!-- <div class="my-2 my-lg-0">
+			<a class="mr-sm-2" class="nav-link" href="#">Login</a>
+			<a class="my-2 my-sm-0" class="nav-link" href="#">Register</a>
+		  </div>-->
+  </div> 
+</nav>
