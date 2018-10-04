@@ -1,0 +1,11 @@
+.viewAds {
+    padding: 10px 10px 10px 100px;
+    background-color: #7d4627;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    margin: 3px 3px 10px 3px;
+    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+    -moz-box-shadow: 0 6px 6px -6px #0E1119;
+    box-shadow: 0 6px 6px -6px #0E1119;
+}
