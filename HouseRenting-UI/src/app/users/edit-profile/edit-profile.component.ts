@@ -35,7 +35,9 @@ export class EditProfileComponent implements OnInit {
     ]);
     this.email = new FormControl('', [
       Validators.required,
-      Validators.email
+      Validators.email,
+      Validators.minLength(6),
+      Validators.maxLength(60)
     ]);
     this.password = new FormControl('', [
       Validators.required,
