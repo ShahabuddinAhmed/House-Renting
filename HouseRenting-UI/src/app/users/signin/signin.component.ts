@@ -23,8 +23,9 @@ export class SigninComponent implements OnInit {
   private CreateFormControls(): void {
     this.email = new FormControl("", [
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(30)
+      Validators.minLength(6),
+      Validators.maxLength(30),
+      Validators.email
     ]);
     this.password = new FormControl("", [
       Validators.required,
