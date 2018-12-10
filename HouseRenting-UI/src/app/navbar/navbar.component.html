@@ -1,53 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <!-- <a class="navbar-brand" routerLink="#">Logo</a> -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	<ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/"><h6>Home</h6><span class="sr-only">(current)</span></a>
-	  	</li>
-	  	<li class="nav-item">
-				<a class="nav-link" routerLink="/profile"><h6>View Profile</h6></a>
-	  	</li>
-      	<li class="nav-item">
-        	<a class="nav-link" routerLink="/user"><h6>User</h6></a>
-	  	</li>
-	  	<li class="nav-item">
-				<a class="nav-link" routerLink="/edit"><h6>Edit Profile</h6></a>
-	  	</li>
-	  	<li class="nav-item">
-				<a class="nav-link" routerLink="/ads"><h6>View Ads</h6></a>
-	  	</li>
-		 	<li class="nav-item">
-				<a class="nav-link" routerLink="/editads"><h6>Edit Ads</h6></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" routerLink="/admin"><h6>Admin</h6></a>
-			</li>
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" routerLink="#">Action</a>
-					<a class="dropdown-item" routerLink="#">Another action</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" routerLink="#">Something else here</a>
-				</div>
-    	</li> -->
-	</ul>
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand">Menu<span class="sr-only">(current)</span></a></mdb-navbar-brand>
 
-	<div class="form-inline my-2 my-lg-0">
-		<ul class="navbar-nav mr-sm-2">
-			<li class="nav-item mr-sm-2">
-				<a class="nav-link" routerLink="/login"><h6>Login</h6></a>
-			</li>
-			<li class="nav-item my-2 my-sm-0">
-				<a class="nav-link" routerLink="/register"><h6>Register</h6></a>
-			</li>
-		</ul>
+  <!-- Collapsible content -->
+  <links>
 
-	</div>
-  </div> 
-</nav>
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link waves-light" mdbWavesEffect href="/">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="/profile">View Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="/user">User</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="/edit">Edit Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="/ads">View Ads</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="/editads">Edit Ads</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="/admin">Admin</a>
+        </li>
+        <!-- Dropdown -->
+      </ul>
+      <ul class="navbar-nav mr-0">
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect ><span class="caret">Shahabuddin Ahmed</span></a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" >Update Profile</a>
+            <a class="dropdown-item waves-light">Logout</a>
+          </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link waves-light" mdbWavesEffect routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link waves-light" mdbWavesEffect routerLink="/register">Register</a>
+        </li>
+    </ul>
+      <!-- Links -->
+
+      <!-- Search form -->
+      <!-- <form class="form-inline waves-light" mdbWavesEffect>
+          <div class="md-form mt-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          </div>
+      </form> -->
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
