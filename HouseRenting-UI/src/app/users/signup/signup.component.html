@@ -1,7 +1,7 @@
 <div class="container">
     <br>
     <br>
-  
+
     <div class="row">
       <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
         <mat-card class="signin-card">
@@ -9,7 +9,7 @@
             <div class="card-basic-content">
               <h2 class="font-weight-bold"><i>New User</i></h2>
             </div>
-  
+
             <form class="example-form" [formGroup]="Register" (ngSubmit)="onSubmit()" novalidate>
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Name" [formControl]="name">
@@ -18,7 +18,7 @@
                 <mat-error *ngIf="name.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
                 <mat-error *ngIf="name.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
               </mat-form-field>
-  
+
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Email" [formControl]="email">
                 <mat-hint>Enter user email!</mat-hint>
@@ -27,7 +27,7 @@
                 <mat-error *ngIf="email.hasError('email') && !email.hasError('maxlength')"> Email is not valid!</mat-error>
                 <mat-error *ngIf="email.hasError('minlength') && !email.hasError('email')"> Email needs minimum 6 charactes</mat-error>
               </mat-form-field>
-  
+
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Password" [formControl]="password" [type]="hide ? 'password' : 'text'">
                 <mat-icon style="font-size: 18px" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
@@ -36,7 +36,7 @@
                 <mat-error *ngIf="password.hasError('maxlength')">Password atmost 30 charactes long</mat-error>
                 <mat-error *ngIf="password.hasError('minlength')">Password needs minimum 6 charactes</mat-error>
               </mat-form-field>
-  
+
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Confirm Password" [formControl]="confirmPassword" [type]="hide1 ? 'password' : 'text'">
                 <mat-icon style="font-size: 18px" matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility' : 'visibility_off'}}</mat-icon>
@@ -45,17 +45,11 @@
                 <mat-error *ngIf="confirmPassword.hasError('maxlength')">ConfirmPassword atmost 30 charactes long</mat-error>
                 <mat-error *ngIf="confirmPassword.hasError('minlength')">ConfirmPassword needs minimum 6 charactes</mat-error>
               </mat-form-field>
-  
+
               <button [disabled]='!Register.valid' type="submit" mat-raised-button color="primary" class="form-button">SignUp</button>
-  
+
             </form>
           </mat-card-content>
-  
-          <mat-card-footer class="card-basic-content">
-            <!-- <p>Already have an account?
-              <a routerLink="/signin" routerLinkActive = "active">Sign In</a>
-            </p> -->
-          </mat-card-footer>
         </mat-card>
       </div>
     </div>
