@@ -1,0 +1,99 @@
+<app-sidebar></app-sidebar>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <h4>Admin Dashboard</h4>
+  <hr>
+  <div class="row">
+    <br>
+    <br>
+    <div class="col-md-6 offset-3" custyle>
+      <table class="table table-striped custab">
+        <thead>
+
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Parent ID</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+                <!-- <tr *ngFor="let _adminList of adminList | slice : 0 : 1">
+
+                    <td>1</td>
+                    <td>{{ _adminList.adminName }}</td>
+                    <td>{{ _adminList.adminEmail }}</td>
+                    <td><a href="" (click)="deleteAdmin(_adminList._id)" class="disabled">Delete</a></td>
+                </tr>
+                <tr *ngFor="let _adminList of adminList | slice : 1 : len">
+
+                    <td>1</td>
+                    <td>{{ _adminList.adminName }}</td>
+                    <td>{{ _adminList.adminEmail }}</td>
+                    <td><a href="" (click)="deleteAdmin(_adminList._id)" routerLinkActive="router-link-active">Delete</a></td>
+                </tr> -->
+        </table>
+        <br>
+    </div>
+
+  </div>
+  <h4 style="text-align:center">Add New Admin</h4>
+    <hr>
+  <div class="row">
+    <div class="col-md-6 offset-3">
+        <mdb-card class="signin-card">
+            <!--Bacground color-->
+
+            <mdb-card-body class="card-basic-content">
+              <!--Name-->
+              <mdb-card-title>
+                <h4>Add New Admin Info</h4>
+              </mdb-card-title>
+              <hr>
+              <form class="example-form" [formGroup]="Register" (ngSubmit)="onSubmit()" novalidate>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Name" [formControl]="adminName">
+                    <mat-hint>Enter admin name!</mat-hint>
+                    <mat-error *ngIf="adminName.hasError('required')">Name fileld is required</mat-error>
+                    <mat-error *ngIf="adminName.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
+                    <mat-error *ngIf="adminName.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email" [formControl]="adminEmail">
+                    <mat-hint>Enter admin email!</mat-hint>
+                    <mat-error *ngIf="adminEmail.hasError('required')">Email fileld is required</mat-error>
+                    <mat-error *ngIf="adminEmail.hasError('maxlength')">Email atmost 60 charactes long.</mat-error>
+                    <mat-error *ngIf="adminEmail.hasError('email') && !adminEmail.hasError('maxlength')"> Email is not valid!</mat-error>
+                    <mat-error *ngIf="adminEmail.hasError('minlength') && !adminEmail.hasError('email')"> Email needs minimum 6 charactes</mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Password" [formControl]="adminPassword" [type]="hide ? 'password' : 'text'">
+                    <mat-icon style="font-size: 18px" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    <mat-hint>Enter admin password!</mat-hint>
+                    <mat-error *ngIf="adminPassword.hasError('required')"> password field is required</mat-error>
+                    <mat-error *ngIf="adminPassword.hasError('maxlength')">password atmost 100 charactes long</mat-error>
+                    <mat-error *ngIf="adminPassword.hasError('minlength')"> password needs minimum 6 charactes</mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Confirm Password" [formControl]="adminConfirmPassword" [type]="hide1 ? 'password' : 'text'">
+                    <mat-icon style="font-size: 18px" matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    <mat-hint>Confirm Password!</mat-hint>
+                    <mat-error *ngIf="adminConfirmPassword.hasError('required')">Confirm password field is required</mat-error>
+                  </mat-form-field>
+
+                  <button [disabled]='!Register.valid' type="submit" mat-raised-button color="primary" class="form-button">Create Admin</button>
+
+                </form>
+            </mdb-card-body>
+
+          </mdb-card>
+    </div>
+  </div>
+</div>
+
+
