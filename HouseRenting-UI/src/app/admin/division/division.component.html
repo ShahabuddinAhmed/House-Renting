@@ -1,0 +1,60 @@
+<app-sidebar></app-sidebar>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-6 offset-md-3" style="padding: 0px;">
+      <h4>All Division List</h4>
+      <mdb-card class="testimonial-card">
+        <!--Bacground color-->
+        <div class="card-up aqua-gradient">
+            <br>
+            <h4>Division Name</h4>
+            <br>
+        </div>
+
+        <!--Avatar-->
+
+        <mdb-card-body>
+          <!--Name-->
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Division Name
+              <span class="pull-right">
+                <button mdbBtn type="button" gradient="blue" mdbWavesEffect class="rounded">Delete</button>
+              </span>
+            </li>
+
+          </ul>
+        </mdb-card-body>
+      </mdb-card>
+      <br>
+      <br>
+    </div>
+    <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
+      <mdb-card class="signin-card">
+
+        <mdb-card-body class="card-basic-content">
+            <!--Name-->
+          <mdb-card-title>
+              <h4>Add New Division</h4>
+          </mdb-card-title>
+          <hr>
+          <form class="example-form" [formGroup]="newDivision" (ngSubmit)="onSubmitDivision()" novalidate>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Division" [formControl]="division">
+              <mat-hint>Enter new Division!</mat-hint>
+              <mat-error *ngIf="division.hasError('required')">Please etner a new Division!</mat-error>
+              <mat-error *ngIf="division.hasError('maxlength')">Division atmost 30 charactes long.</mat-error>
+              <mat-error *ngIf="division.hasError('minlength')"> Division needs minimum 3 charactes</mat-error>
+            </mat-form-field>
+            <button [disabled]='!newDivision.valid' type="submit" mat-raised-button color="primary" class="form-button">Submit</button>
+          </form>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+  </div>
+  <br>
+  <br>
+</div>

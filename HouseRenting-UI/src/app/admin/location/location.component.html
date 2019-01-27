@@ -1,0 +1,37 @@
+<app-sidebar></app-sidebar>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
+      <mdb-card class="signin-card">
+
+        <mdb-card-body class="card-basic-content">
+            <!--Name-->
+          <mdb-card-title>
+              <h4>Add New Location</h4>
+          </mdb-card-title>
+          <hr>
+          <form class="example-form" [formGroup]="newDistict" (ngSubmit)="onSubmitDistict()" novalidate>
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Division" [formControl]="selectDivision">
+                <mat-option *ngFor="let food of foods" [value]="food.value">{{food.value}}</mat-option>
+              </mat-select>
+              <mat-hint>Select a Division!</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Location" [formControl]="district">
+              <mat-hint>Enter new Location!</mat-hint>
+              <mat-error *ngIf="district.hasError('required')">Etner a new location!</mat-error>
+              <mat-error *ngIf="district.hasError('maxlength')">Location atmost 30 charactes long.</mat-error>
+              <mat-error *ngIf="district.hasError('minlength')"> Location needs minimum 3 charactes</mat-error>
+            </mat-form-field>
+            <button [disabled]='!newDistict.valid' type="submit" mat-raised-button color="primary" class="form-button">Submit</button>
+          </form>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+  </div>
+  </div>
