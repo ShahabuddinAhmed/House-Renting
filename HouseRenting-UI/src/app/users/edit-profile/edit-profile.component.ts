@@ -1,6 +1,9 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Register } from './../models/register';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../user.service';
+import { Login } from '../models/login';
 
 @Component({
   selector: 'app-edit-profile',
@@ -17,6 +20,8 @@ export class EditProfileComponent implements OnInit {
   public password: FormControl;
   public confirmPassword: FormControl;
   register: Register;
+  public login: Login;
+  public userID: string;
 
   private createFormGroup(): void {
     this.Register = new  FormGroup( {
@@ -51,11 +56,14 @@ export class EditProfileComponent implements OnInit {
     ]);
   }
 
-  constructor() { }
+  constructor(private _userService: UserService, private router: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.createFormControls();
     this.createFormGroup();
+    this.getUserID();
+    this.getUserInfo(this.userID);
+    this.setFormControlvalue();
   }
 
   onSubmit() {
@@ -64,10 +72,40 @@ export class EditProfileComponent implements OnInit {
     this.register.userEmail = this.email.value;
     this.register.userPassword = this.password.value;
     this.register.userConfirmPassword = this.confirmPassword.value;
-    console.log(this.register.userName);
-    console.log(this.register.userEmail);
-    console.log(this.register.userPassword);
-    console.log(this.register.userConfirmPassword);
+    this._userService.updateUser(this.userID, this.register)
+    .subscribe(data => {
+      console.log(data);
+      this.router.navigate(['user']);
+    },
+    err => {
+      console.log(err);
+    });
+  }
+
+  private getUserInfo(id: string) {
+    this._userService._getUserInfo(id).subscribe(data => {
+      this.register = data;
+      this.setFormControlvalue();
+    },
+    err => {
+      console.log(err);
+    }
+    );
+  }
+
+  private setFormControlvalue() {
+    this.name.setValue(this.register.userName);
+    this.email.setValue(this.register.userEmail);
+  }
+
+  private getUserID() {
+    this.activeRoute.params.subscribe(param => {
+      this.userID = param['id'];
+      console.log(this.userID);
+    },
+    err => {
+      console.log(err);
+    });
   }
 
 }
