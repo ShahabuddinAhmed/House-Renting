@@ -1,6 +1,9 @@
 import { House } from './../models/ads';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-user',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  jwtHelper = new JwtHelperService();
   public adsHouse: FormGroup;
   public title: FormControl;
   public bedroom: FormControl;
@@ -20,6 +23,7 @@ export class UserComponent implements OnInit {
   public address: FormControl;
   public description: FormControl;
   house: House;
+  public userID: string;
 
   private createFormGroup(): void {
     this.adsHouse = new  FormGroup( {
@@ -83,11 +87,12 @@ export class UserComponent implements OnInit {
     ]);
   }
 
-  constructor() { }
+  constructor(private _userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.createFormControls();
     this.createFormGroup();
+    this.getUserID();
   }
 
   onSubmit() {
@@ -101,15 +106,20 @@ export class UserComponent implements OnInit {
     this.house.userTaka = this.taka.value;
     this.house.userAddress = this.address.value;
     this.house.userDescription = this.description.value;
-    console.log(this.house.userTitle);
-    console.log(this.house.userBeadRoom);
-    console.log(this.house.userKitchen);
-    console.log(this.house.userWashRoom);
-    console.log(this.house.userPhon);
-    console.log(this.house.userArea);
-    console.log(this.house.userTaka);
-    console.log(this.house.userAddress);
-    console.log(this.house.userDescription);
+    this._userService.createHouseAds(this.house)
+    .subscribe(data => {
+      console.log(data);
+      this.router.navigate(['user']);
+    },
+    err => {
+      console.log(err);
+    });
+  }
+
+  private getUserID() {
+    const token = localStorage.getItem('token');
+    const tokenPayload = this.jwtHelper.decodeToken(token);
+    this.userID = tokenPayload.userID;
   }
 
 }

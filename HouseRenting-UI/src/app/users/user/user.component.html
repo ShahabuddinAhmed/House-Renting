@@ -1,15 +1,17 @@
 <div class="container">
     <br>
     <br>
-  
+
     <div class="row">
       <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
-        <mat-card class="signin-card">
-          <mat-card-content>
-            <div class="card-basic-content">
-              <h2 class="font-weight-bold"><i>Post Your Ads</i></h2>
-            </div>
-  
+        <mdb-card class="signin-card">
+
+          <mdb-card-body class="card-basic-content">
+              <!--Name-->
+            <mdb-card-title>
+                <h4>Post Your Ads</h4>
+            </mdb-card-title>
+            <hr>
             <form class="example-form" [formGroup]="adsHouse" (ngSubmit)="onSubmit()" novalidate>
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Title" [formControl]="title">
@@ -18,7 +20,7 @@
                 <mat-error *ngIf="title.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
                 <mat-error *ngIf="title.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
               </mat-form-field>
-  
+
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="bedroom" [formControl]="bedroom">
                 <mat-hint>Enter bedroom!</mat-hint>
@@ -82,12 +84,12 @@
                 <mat-error *ngIf="description.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
                 <mat-error *ngIf="description.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
               </mat-form-field>
-  
+
               <button [disabled]='!adsHouse.valid' type="submit" mat-raised-button color="primary" class="form-button">Submit</button>
-  
+
             </form>
-          </mat-card-content>
-        </mat-card>
+          </mdb-card-body>
+        </mdb-card>
       </div>
     </div>
   </div>
