@@ -1,6 +1,8 @@
 import { House } from './../models/ads';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-ads',
@@ -20,6 +22,7 @@ export class EditAdsComponent implements OnInit {
   public address: FormControl;
   public description: FormControl;
   house: House;
+  public houseID: string;
 
   private createFormGroup(): void {
     this.adsHouse = new  FormGroup( {
@@ -83,11 +86,13 @@ export class EditAdsComponent implements OnInit {
     ]);
   }
 
-  constructor() { }
+  constructor(private _userService: UserService, private router: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.createFormControls();
     this.createFormGroup();
+    this.getHouseAdsID();
+    this.getHouseAdsInfo(this.houseID);
   }
 
   onSubmit() {
@@ -101,15 +106,47 @@ export class EditAdsComponent implements OnInit {
     this.house.userTaka = this.taka.value;
     this.house.userAddress = this.address.value;
     this.house.userDescription = this.description.value;
-    console.log(this.house.userTitle);
-    console.log(this.house.userBeadRoom);
-    console.log(this.house.userKitchen);
-    console.log(this.house.userWashRoom);
-    console.log(this.house.userPhon);
-    console.log(this.house.userArea);
-    console.log(this.house.userTaka);
-    console.log(this.house.userAddress);
-    console.log(this.house.userDescription);
+    this._userService.editHouseAds(this.houseID, this.house)
+    .subscribe(data => {
+      console.log(data);
+      this.router.navigate(['user']);
+    },
+    err => {
+      console.log(err);
+    });
+  }
+
+  private getHouseAdsID() {
+    this.activeRoute.params.subscribe(param => {
+      this.houseID = param['id'];
+      console.log(this.houseID);
+    },
+    err => {
+      console.log(err);
+    });
+  }
+
+  private getHouseAdsInfo(id: string) {
+    this._userService._getHouseAdsInfo(id).subscribe(data => {
+      this.house = data;
+      this.setFormControlvalue();
+    },
+    err => {
+      console.log(err);
+    }
+    );
+  }
+
+  private setFormControlvalue() {
+    this.title.setValue(this.house.userTitle);
+    this.bedroom.setValue(this.house.userBeadRoom);
+    this.kitchen.setValue(this.kitchen.value);
+    this.washroom.setValue(this.washroom.value);
+    this.phon.setValue(this.phon.value);
+    this.area.setValue(this.area.value);
+    this.taka.setValue(this.taka.value);
+    this.address.setValue(this.address.value);
+    this.description.setValue(this.description.value);
   }
 
 }
