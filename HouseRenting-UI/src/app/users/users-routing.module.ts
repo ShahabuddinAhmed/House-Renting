@@ -10,15 +10,15 @@ import { UserComponent } from './user/user.component';
 import { EditAdsComponent } from './edit-ads/edit-ads.component';
 
 const routes: Routes = [
-  { path: "register", component: SignupComponent },
-  { path: "login", component: SigninComponent },
-  { path: "profile", component: ViewProfileComponent },
-  { path: "user", component: UserComponent },
-  { path: "view", component: ViewProfileComponent },
-  { path: "edit", component: EditProfileComponent },
-  { path: "ads", component: ViewAdsComponent },
-  { path: "editads", component: EditAdsComponent }
-]
+  { path: 'register', component: SignupComponent },
+  { path: 'login', component: SigninComponent },
+  { path: 'profile', component: ViewProfileComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'view', component: ViewProfileComponent },
+  { path: 'edit', component: EditProfileComponent },
+  { path: 'ads', component: ViewAdsComponent },
+  { path: 'editads', component: EditAdsComponent }
+];
 
 @NgModule({
   imports: [
