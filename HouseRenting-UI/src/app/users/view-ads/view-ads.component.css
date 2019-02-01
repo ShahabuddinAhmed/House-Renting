@@ -1,11 +1,45 @@
-.viewAds {
-    padding: 10px 10px 10px 100px;
-    background-color: #7d4627;
-    color: white;
-    font-size: 18px;
-    border-radius: 5px;
-    margin: 3px 3px 10px 3px;
-    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
-    -moz-box-shadow: 0 6px 6px -6px #0E1119;
-    box-shadow: 0 6px 6px -6px #0E1119;
+.signin-card{
+  padding-top: 0%;
+  width: 100%;
+  border-radius: 10px;
+}
+.card-basic-content{
+  padding: 50px;
+  text-align: justify;
+  color: black;
+  /* background-color: blue; */
+
+}
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  font-size: 18px;
+  width: 100%;
+  margin: 4px 0px;
+}
+
+.form-button{
+
+  width: 100%;
+  font-size: 18px;
+  padding: 4px 0px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-radius: 20px;
+}
+
+.rounded {
+  border-radius: 25px !important;
+}
+button {
+  text-transform: none;
+  font-size: 16px;
+  color: white !important;
+  width: 100%;
+}
+
+h4 {
+  text-align: center;
 }
