@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AdminRegister } from '../models/admin-register';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdminService } from '../admin.service';
+import { AccountService } from '../service/account.service';
+
 
 @Component({
   selector: 'app-admin-panel',
@@ -53,12 +54,12 @@ export class AdminPanelComponent implements OnInit {
     ]);
   }
 
-  constructor(private _adminService: AdminService, private router: Router) { }
+  constructor(private _accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
     this.createFormControls();
     this.createFormGroup();
-    this.getAdmin();
+    this.getAllAdmin();
   }
 
   onSubmit() {
@@ -67,37 +68,38 @@ export class AdminPanelComponent implements OnInit {
     this.register.adminEmail = this.adminEmail.value;
     this.register.adminPassword = this.adminPassword.value;
     this.register.adminConfirmPassword = this.adminConfirmPassword.value;
-    // this._adminService.addNewAdmin(this.register)
-    // .subscribe(data => {
-    //   this.router.navigate(['/admin']);
-    //   console.log('successfully');
-    // },
-    // error => {
-    //   console.error(error);
-    // }
-    // );
+    this._accountService._adminRegister(this.register)
+    .subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/admin']);
+    },
+    error => {
+      console.error(error);
+    }
+    );
   }
 
-  private getAdmin() {
-    // this._adminService.getAllAdmin().subscribe(data => {
-    //   this.adminList = data;
-    //   this.len = this.adminList.length;
-    //   console.log(this.adminList);
-    // },
-    // err => {
-    //   console.log(err);
-    // }
-    //   );
+  private getAllAdmin() {
+    this._accountService._getAllAdmin()
+    .subscribe(data => {
+      this.adminList = data;
+      this.len = this.adminList.length;
+      console.log(this.adminList);
+    },
+    err => {
+      console.log(err);
+    }
+      );
   }
 
   deleteAdmin(ID: string) {
-    // this._adminService._deleteAdmin(ID)
-    // .subscribe(data => {
-    //   this.getAdmin();
-    // },
-    // err => {
-    //   console.log(err);
-    // });
+    this._accountService._deleteAdmin(ID)
+    .subscribe(data => {
+      this.getAllAdmin();
+    },
+    err => {
+      console.log(err);
+    });
   }
 
 }
