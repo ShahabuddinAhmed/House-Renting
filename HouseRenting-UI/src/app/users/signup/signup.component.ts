@@ -1,6 +1,9 @@
 import { Register } from './../models/register';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
+import { Login } from '../models/login';
 
 @Component({
   selector: 'app-signup',
@@ -17,6 +20,7 @@ export class SignupComponent implements OnInit {
   public password: FormControl;
   public confirmPassword: FormControl;
   register: Register;
+  login: Login;
 
   private createFormGroup(): void {
     this.Register = new  FormGroup( {
@@ -51,7 +55,7 @@ export class SignupComponent implements OnInit {
     ]);
   }
 
-  constructor() { }
+  constructor(private _userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.createFormControls();
@@ -64,10 +68,25 @@ export class SignupComponent implements OnInit {
     this.register.userEmail = this.email.value;
     this.register.userPassword = this.password.value;
     this.register.userConfirmPassword = this.confirmPassword.value;
-    console.log(this.register.userName);
-    console.log(this.register.userEmail);
-    console.log(this.register.userPassword);
-    console.log(this.register.userConfirmPassword);
+    this.login = new Login();
+    this.login.userEmail = this.email.value;
+    this.login.userPassword = this.password.value;
+
+    this._userService.userRegister(this.register)
+    .subscribe(data => {
+      console.log(data);
+      this._userService.userLogin(this.login)
+    .subscribe(loginData => {
+      console.log(loginData);
+      this.router.navigate(['user']);
+    },
+    err => {
+      console.log(err);
+    });
+    },
+    err => {
+      console.log(err);
+    });
   }
 
 }
