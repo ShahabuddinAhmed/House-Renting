@@ -8,16 +8,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './user/user.component';
 import { EditAdsComponent } from './edit-ads/edit-ads.component';
+import { CreateadsComponent } from './createads/createads.component';
+import { AddimageComponent } from './addimage/addimage.component';
 
 const routes: Routes = [
   { path: 'register', component: SignupComponent },
   { path: 'login', component: SigninComponent },
   { path: 'profile', component: ViewProfileComponent },
-  { path: 'user', component: UserComponent },
+  { path: 'users', component: UserComponent },
   { path: 'view', component: ViewProfileComponent },
   { path: 'edit', component: EditProfileComponent },
   { path: 'ads', component: ViewAdsComponent },
-  { path: 'editads', component: EditAdsComponent }
+  { path: 'editads', component: EditAdsComponent },
+  { path: 'createads', component: CreateadsComponent },
+  { path: 'addimage/:id', component: AddimageComponent }
 ];
 
 @NgModule({
