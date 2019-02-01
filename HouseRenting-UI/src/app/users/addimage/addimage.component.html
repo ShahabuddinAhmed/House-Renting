@@ -1,0 +1,40 @@
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <mdb-card class="signin-card">
+
+        <mdb-card-body class="card-basic-content">
+            <!--Name-->
+          <mdb-card-title>
+              <h4>Change Cover Picture</h4>
+          </mdb-card-title>
+          <hr>
+
+        </mdb-card-body>
+      </mdb-card>
+      <br>
+      <br>
+    </div>
+
+    <div class="col-md-6 offset-3">
+      <mdb-card class="signin-card">
+
+        <mdb-card-body class="card-basic-content">
+            <!--Name-->
+          <mdb-card-title>
+              <h4>Add New Multiple Picture</h4>
+          </mdb-card-title>
+          <hr>
+          <input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
+          <button type="button" class="btn btn-success btn-s" (click)="upload()">
+              <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload
+          </button>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+  </div>
+</div>
