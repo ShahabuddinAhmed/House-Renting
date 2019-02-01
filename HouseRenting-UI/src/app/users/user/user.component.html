@@ -1,95 +1,13 @@
+<br>
+<br>
+<br>
+<br>
 <div class="container">
-    <br>
-    <br>
+  <div class="row">
+    <div class="col-md-10 offset-1">
+      <h4>This is User House Ads List</h4>
+      <hr>
 
-    <div class="row">
-      <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
-        <mdb-card class="signin-card">
-
-          <mdb-card-body class="card-basic-content">
-              <!--Name-->
-            <mdb-card-title>
-                <h4>Post Your Ads</h4>
-            </mdb-card-title>
-            <hr>
-            <form class="example-form" [formGroup]="adsHouse" (ngSubmit)="onSubmit()" novalidate>
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Title" [formControl]="title">
-                <mat-hint>Enter Ads Title!</mat-hint>
-                <mat-error *ngIf="title.hasError('required')">Name fileld is required</mat-error>
-                <mat-error *ngIf="title.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-                <mat-error *ngIf="title.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="bedroom" [formControl]="bedroom">
-                <mat-hint>Enter bedroom!</mat-hint>
-                <mat-error *ngIf="bedroom.hasError('required')">Name fileld is required</mat-error>
-                <mat-error *ngIf="bedroom.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-                <mat-error *ngIf="bedroom.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="kitchen" [formControl]="kitchen">
-                <mat-hint>Enter kitchen!</mat-hint>
-                <mat-error *ngIf="kitchen.hasError('required')">Name fileld is required</mat-error>
-                <mat-error *ngIf="kitchen.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-                <mat-error *ngIf="kitchen.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="washroom" [formControl]="washroom">
-                <mat-hint>Enter washroom!</mat-hint>
-                <mat-error *ngIf="washroom.hasError('required')">Name fileld is required</mat-error>
-                <mat-error *ngIf="washroom.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-                <mat-error *ngIf="washroom.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="phon" [formControl]="phon">
-                <mat-hint>Enter phon!</mat-hint>
-                <mat-error *ngIf="phon.hasError('required')">Name fileld is required</mat-error>
-                <mat-error *ngIf="phon.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-                <mat-error *ngIf="phon.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="area" [formControl]="area">
-                <mat-hint>Enter area!</mat-hint>
-                <mat-error *ngIf="area.hasError('required')">Name fileld is required</mat-error>
-                <mat-error *ngIf="area.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-                <mat-error *ngIf="area.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="taka" [formControl]="taka">
-                <mat-hint>Enter taka!</mat-hint>
-                <mat-error *ngIf="taka.hasError('required')">Name fileld is required</mat-error>
-                <mat-error *ngIf="taka.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-                <mat-error *ngIf="taka.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="address" [formControl]="address"></textarea>
-                <mat-hint>Enter address!</mat-hint>
-                <mat-error *ngIf="address.hasError('required')">Name fileld is required</mat-error>
-                <mat-error *ngIf="address.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-                <mat-error *ngIf="address.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="description" [formControl]="description"></textarea>
-                <mat-hint>Enter description!</mat-hint>
-                <mat-error *ngIf="description.hasError('required')">Name fileld is required</mat-error>
-                <mat-error *ngIf="description.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-                <mat-error *ngIf="description.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
-              </mat-form-field>
-
-              <button [disabled]='!adsHouse.valid' type="submit" mat-raised-button color="primary" class="form-button">Submit</button>
-
-            </form>
-          </mdb-card-body>
-        </mdb-card>
-      </div>
     </div>
   </div>
+</div>
