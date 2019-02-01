@@ -1,6 +1,8 @@
 import { Login } from './../models/login';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-signin',
@@ -21,19 +23,19 @@ export class SigninComponent implements OnInit {
     });
   }
   private CreateFormControls(): void {
-    this.email = new FormControl("", [
+    this.email = new FormControl('', [
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(60),
       Validators.email
     ]);
-    this.password = new FormControl("", [
+    this.password = new FormControl('', [
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(100)
     ]);
   }
-  constructor() { }
+  constructor(private _userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.CreateFormControls();
@@ -44,8 +46,15 @@ export class SigninComponent implements OnInit {
     this.login = new Login();
     this.login.userEmail = this.email.value;
     this.login.userPassword = this.password.value;
-    console.log(this.login.userEmail);
-    console.log(this.login.userPassword);
+    this._userService.userLogin(this.login)
+    .subscribe(data => {
+      console.log(data);
+      this._userService.setToken(data);
+      this.router.navigate(['/user']);
+      },
+      err => {
+        console.log(err);
+      });
   }
 
 }
