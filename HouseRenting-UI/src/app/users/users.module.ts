@@ -16,7 +16,8 @@ import {
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatSelectModule
 } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
@@ -45,6 +46,7 @@ import { AddimageComponent } from './addimage/addimage.component';
     MatCardModule,
     MatSidenavModule,
     MatTooltipModule,
+    MatSelectModule,
     RouterModule,
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot()
