@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   constructor(private _userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.getUserID();
+    // this.getUserID();
   }
 
   onSubmit() {
