@@ -22,7 +22,7 @@ export class UserService {
       })
     };
 
-    return this.http.post('http://localhost:3000/user/register', _register, httpOptions);
+    return this.http.post('http://localhost:3000/user/register/', _register, httpOptions);
   }
 
   userLogin(_login: Login) {
@@ -32,7 +32,7 @@ export class UserService {
       })
     };
 
-    return this.http.post('http://localhost:3000/user/login', _login, httpOptions);
+    return this.http.post('http://localhost:3000/user/login/', _login, httpOptions);
   }
 
   _getUserInfo(id: string): Observable<Register> {
@@ -50,7 +50,7 @@ export class UserService {
   }
 
   _getHouseAdsInfo(id: string): Observable<House> {
-    return this.http.get<House>(`http://localhost:3000/user/${id}`);
+    return this.http.get<House>(`http://localhost:3000/houseads/${id}`);
   }
 
   editHouseAds(id: string, _house: House) {
@@ -60,7 +60,7 @@ export class UserService {
       })
     };
 
-    return this.http.patch(`http://localhost:3000/user/update/${id}`, _house, httpOptions);
+    return this.http.patch(`http://localhost:3000/houseads/update/${id}`, _house, httpOptions);
   }
 
   createHouseAds(_house: House) {
@@ -70,11 +70,11 @@ export class UserService {
       })
     };
 
-    return this.http.post('http://localhost:3000/user/createads', _house, httpOptions);
+    return this.http.post('http://localhost:3000/houseads/create', _house, httpOptions);
   }
 
   _getAllAds(): Observable<House[]> {
-    return this.http.get<House[]>('http://localhost:3000/user/');
+    return this.http.get<House[]>('http://localhost:3000/houseads/all');
   }
 
   setToken(auth: any) {
