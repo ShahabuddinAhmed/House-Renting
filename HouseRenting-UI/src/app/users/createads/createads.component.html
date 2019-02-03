@@ -70,6 +70,22 @@
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
+              <mat-select placeholder="Select Division" [formControl]="division" (valueChange)="onNameSelected($event)">
+                <mat-option *ngFor="let division of divisionValue" [value]="division.divisionName">{{ division.divisionName }}</mat-option>
+              </mat-select>
+              <mat-hint>Select District!</mat-hint>
+              <mat-error *ngIf="division.hasError('required')">Please Select Division!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Select Location" [formControl]="location">
+                <mat-option *ngFor="let location of locationValue" [value]="location.locationName">{{ location.locationName }}</mat-option>
+              </mat-select>
+              <mat-hint>Select Location!</mat-hint>
+              <mat-error *ngIf="location.hasError('required')">Please Select location!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
               <textarea matInput placeholder="address" [formControl]="address"></textarea>
               <mat-hint>Enter address!</mat-hint>
               <mat-error *ngIf="address.hasError('required')">Name fileld is required</mat-error>
