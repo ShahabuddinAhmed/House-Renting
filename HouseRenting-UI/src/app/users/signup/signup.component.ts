@@ -78,7 +78,7 @@ export class SignupComponent implements OnInit {
       this._userService.userLogin(this.login)
     .subscribe(loginData => {
       console.log(loginData);
-      this.router.navigate(['user']);
+      this.router.navigate(['/user']);
     },
     err => {
       console.log(err);
