@@ -13,7 +13,9 @@
               <h4>Change Cover Picture</h4>
           </mdb-card-title>
           <hr>
+          <input [formControl]="name1" type="file" (change)="fileChangeEvent1($event)" placeholder="Upload a file..."/>
 
+          <button [disabled]='!name1.valid' (click)="upload1()" type="submit" mat-raised-button color="primary" class="form-button">Upload</button>
         </mdb-card-body>
       </mdb-card>
       <br>
@@ -29,10 +31,9 @@
               <h4>Add New Multiple Picture</h4>
           </mdb-card-title>
           <hr>
-          <input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
-          <button type="button" class="btn btn-success btn-s" (click)="upload()">
-              <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload
-          </button>
+          <input [formControl]="name2" type="file" (change)="fileChangeEvent2($event)" placeholder="Upload a file..." multiple/>
+
+          <button [disabled]='!name2.valid' (click)="upload2()" type="submit" mat-raised-button color="primary" class="form-button">Upload</button>
         </mdb-card-body>
       </mdb-card>
     </div>
