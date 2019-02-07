@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { House } from '../models/ads';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Division } from '../../admin/models/division';
 import { Location } from '../../admin/models/location';
 import { LocationService } from 'src/app/admin/service/location.service';
@@ -31,6 +32,7 @@ export class CreateadsComponent implements OnInit {
   public userID: string;
   public divisionValue: Division[];
   public locationValue: Location[];
+  jwtHelper = new JwtHelperService();
 
   private createFormGroup(): void {
     this.adsHouse = new  FormGroup( {
@@ -42,6 +44,8 @@ export class CreateadsComponent implements OnInit {
       area: this.area,
       taka: this.taka,
       address: this.address,
+      division: this.division,
+      location: this.location,
       description: this.description
     });
   }
@@ -49,33 +53,48 @@ export class CreateadsComponent implements OnInit {
   private createFormControls(): void {
     this.title = new FormControl('', [
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(30)
+      Validators.minLength(10),
+      Validators.maxLength(500)
     ]);
     this.bedroom = new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.min(1),
+      Validators.max(100),
+      Validators.pattern('[0-9]*')
     ]);
     this.kitchen = new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.min(0),
+      Validators.max(10),
+      Validators.pattern('[0-9]*')
     ]);
     this.washroom = new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.min(0),
+      Validators.max(100),
+      Validators.pattern('[0-9]*')
     ]);
     this.phon = new FormControl('', [
       Validators.required,
-      Validators.minLength(3),
+      Validators.minLength(6),
       Validators.maxLength(30)
     ]);
     this.area = new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.min(100),
+      Validators.max(10000),
+      Validators.pattern('[0-9]*')
     ]);
     this.taka = new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.min(500),
+      Validators.max(500000),
+      Validators.pattern('[0-9]*')
     ]);
     this.address = new FormControl('', [
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(5000)
+      Validators.minLength(5),
+      Validators.maxLength(1000)
     ]);
     this.division = new FormControl('', [
       Validators.required
@@ -85,12 +104,13 @@ export class CreateadsComponent implements OnInit {
     ]);
     this.description = new FormControl('', [
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(5000)
+      Validators.minLength(100),
+      Validators.maxLength(1000000)
     ]);
   }
 
-  constructor(private _userService: UserService,
+  constructor(
+    private _userService: UserService,
     private router: Router,
     private _locationService: LocationService
     ) { }
@@ -99,6 +119,14 @@ export class CreateadsComponent implements OnInit {
     this.createFormControls();
     this.createFormGroup();
     this.getDivision();
+    this.getUserID();
+  }
+
+  private getUserID() {
+    const token = localStorage.getItem('token');
+    const tokenPayload = this.jwtHelper.decodeToken(token);
+    this.userID = tokenPayload.userID;
+    console.log(this.userID);
   }
 
   onSubmit() {
@@ -114,6 +142,7 @@ export class CreateadsComponent implements OnInit {
     this.house.division = this.division.value;
     this.house.location = this.location.value;
     this.house.description = this.description.value;
+    this.house.userID = this.userID;
     this._userService.createHouseAds(this.house)
     .subscribe(data => {
       console.log(data);
