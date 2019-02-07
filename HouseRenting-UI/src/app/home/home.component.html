@@ -1,87 +1,189 @@
-<div class="">
-    <div class="">
-      <br>
-      <ul class="gallery">
-        <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-          <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-          <div class="galleryInfo">
-            <h2>Title</h2>
-            <h3>Name</h3>
-            <p>Description</p>
-          </div>
-        </li>
-  
-        <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-          <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-          <div class="galleryInfo">
-            <h2>Title</h2>
-            <h3>Name</h3>
-            <p>Description</p>
-          </div>
-        </li>
-  
-        <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-          <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-          <div class="galleryInfo">
-            <h2>Title</h2>
-            <h3>Name</h3>
-            <p>Description</p>
-          </div>
-        </li>
-  
-        <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-          <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-          <div class="galleryInfo">
-            <h2>Title</h2>
-            <h3>Name</h3>
-            <p>Description</p>
-          </div>
-        </li>
-        
-        <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-          <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-          <div class="galleryInfo">
-            <h2>Title</h2>
-            <h3>Name</h3>
-            <p>Description</p>
-          </div>
-        </li>
-        
-        <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-          <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-          <div class="galleryInfo">
-            <h2>Title</h2>
-            <h3>Name</h3>
-            <p>Description</p>
-          </div>
-        </li>
-  
-        <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-            <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-            <div class="galleryInfo">
-              <h2>Title</h2>
-              <h3>Name</h3>
-              <p>Description</p>
+<br>
+<br>
+<br>
+<br>
+
+<!-- Start Search Section -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-1">
+      <mdb-card class="signin-card">
+        <!--Bacground color-->
+
+        <mdb-card-body class="card-basic-content">
+          <!--Name-->
+          <mdb-card-title>
+            <h4>Search Your Desire House</h4>
+          </mdb-card-title>
+          <hr>
+          <form class="example-form" [formGroup]="Search" (ngSubmit)="onSubmit()" novalidate>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Select District" [formControl]="district" (valueChange)="onNameSelected($event)">
+                    <mat-option *ngFor="let division of _division" [value]="division.divisionName">{{ division.divisionName }}</mat-option>
+                  </mat-select>
+                  <mat-hint>Select District!</mat-hint>
+                  <mat-error *ngIf="district.hasError('required')">Please Select District!</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-5">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Select Location" [formControl]="location">
+                    <mat-option *ngFor="let location of _location" [value]="location.locationName">{{ location.locationName }}</mat-option>
+                  </mat-select>
+                  <mat-hint>Select Location!</mat-hint>
+                  <mat-error *ngIf="location.hasError('required')">Please Select location!</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-1"></div>
+
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Select Min Price" [formControl]="minMoney" (valueChange)="onMoneySelected($event)">
+                    <mat-option *ngFor="let _minMoneyValue of minMoneyValue" [value]="_minMoneyValue.minMoneyName">{{ _minMoneyValue.minMoneyName }}</mat-option>
+                  </mat-select>
+                  <mat-hint>Select Min Price!</mat-hint>
+                  <mat-error *ngIf="minMoney.hasError('required')">Please Select Min Money!</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-5">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Select Max Price" [formControl]="maxMoney">
+                    <mat-option *ngFor="let _maxMoneyValue of maxMoneyValue" [value]="_maxMoneyValue.maxMoneyName">{{ _maxMoneyValue.maxMoneyName }}</mat-option>
+                  </mat-select>
+                  <mat-hint>Select Max Price!</mat-hint>
+                  <mat-error *ngIf="maxMoney.hasError('required')">Please Select Max Money!</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-1"></div>
+
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Select Min Area" [formControl]="minArea" (valueChange)="onAreaSelected($event)">
+                    <mat-option *ngFor="let minArea of _minArea" [value]="minArea.minAreaName">{{ minArea.minAreaName }}</mat-option>
+                  </mat-select>
+                  <mat-hint>Select Min Area!</mat-hint>
+                  <mat-error *ngIf="minArea.hasError('required')">Please Select Min Area!</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-5">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Select Max Area" [formControl]="maxArea">
+                    <mat-option *ngFor="let maxArea of _maxArea" [value]="maxArea.maxAreaName">{{ maxArea.maxAreaName }}</mat-option>
+                  </mat-select>
+                  <mat-hint>Select Max Area!</mat-hint>
+                  <mat-error *ngIf="maxArea.hasError('required')">Please Select Max Area!</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-10 offset-md-1">
+                  <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Select Room Number" [formControl]="roomNumber">
+                      <mat-option *ngFor="let _getRoom of getRoomNumber" [value]="_getRoom.roomName">{{ _getRoom.roomName }}</mat-option>
+                    </mat-select>
+                    <mat-hint>Select Room Number!</mat-hint>
+                    <mat-error *ngIf="roomNumber.hasError('required')">Please Select room Number!</mat-error>
+                  </mat-form-field>
+                </div>
             </div>
-          </li>
-          
-          <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-            <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-            <div class="galleryInfo">
-              <h2>Title</h2>
-              <h3>Name</h3>
-              <p>Description</p>
-            </div>
-          </li>
-          
-          <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-            <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-            <div class="galleryInfo">
-              <h2>Title</h2>
-              <h3>Name</h3>
-              <p>Description</p>
-            </div>
-          </li>
-      </ul>
+
+              <button [disabled]='!Search.valid' type="submit" mat-raised-button color="primary" class="form-button">Search</button>
+            </form>
+        </mdb-card-body>
+
+      </mdb-card>
     </div>
+  </div>
+</div>
+<!-- End Search Section -->
+<br>
+<br>
+<!-- product Galarry -->
+  <div>
+    <ul class="gallery">
+      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
+        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
+        <div class="galleryInfo">
+          <h2>Title</h2>
+          <h3>Name</h3>
+          <p>Description</p>
+        </div>
+      </li>
+
+      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
+        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
+        <div class="galleryInfo">
+          <h2>Title</h2>
+          <h3>Name</h3>
+          <p>Description</p>
+        </div>
+      </li>
+
+      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
+        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
+        <div class="galleryInfo">
+          <h2>Title</h2>
+          <h3>Name</h3>
+          <p>Description</p>
+        </div>
+      </li>
+
+      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
+        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
+        <div class="galleryInfo">
+          <h2>Title</h2>
+          <h3>Name</h3>
+          <p>Description</p>
+        </div>
+      </li>
+
+      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
+        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
+        <div class="galleryInfo">
+          <h2>Title</h2>
+          <h3>Name</h3>
+          <p>Description</p>
+        </div>
+      </li>
+
+      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
+        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
+        <div class="galleryInfo">
+          <h2>Title</h2>
+          <h3>Name</h3>
+          <p>Description</p>
+        </div>
+      </li>
+
+      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
+        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
+        <div class="galleryInfo">
+          <h2>Title</h2>
+          <h3>Name</h3>
+          <p>Description</p>
+        </div>
+      </li>
+
+      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
+        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
+        <div class="galleryInfo">
+          <h2>Title</h2>
+          <h3>Name</h3>
+          <p>Description</p>
+        </div>
+      </li>
+
+      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
+        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
+        <div class="galleryInfo">
+          <h2>Title</h2>
+          <h3>Name</h3>
+          <p>Description</p>
+        </div>
+      </li>
+    </ul>
   </div>
