@@ -1,4 +1,4 @@
 export class Image {
-    userImage: string;
-    userAdsID: string;
+  userImage: string;
+  userAdsID: string;
 }
