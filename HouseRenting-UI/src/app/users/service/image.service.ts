@@ -18,4 +18,12 @@ export class ImageService {
     };
     return this.http.patch(`http://localhost:3000/post/update/${userId}`, fd, httpOptions);
   }
+
+  _uploadCoverImage(fd: any, userId: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+      })
+    };
+    return this.http.patch(`http://localhost:3000/post/update/${userId}`, fd, httpOptions);
+  }
 }
