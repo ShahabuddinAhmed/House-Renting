@@ -16,73 +16,89 @@
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Title" [formControl]="title">
               <mat-hint>Enter Ads Title!</mat-hint>
-              <mat-error *ngIf="title.hasError('required')">Name fileld is required</mat-error>
-              <mat-error *ngIf="title.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-              <mat-error *ngIf="title.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+              <mat-error *ngIf="title.hasError('required')">Title fileld is required!</mat-error>
+              <mat-error *ngIf="title.hasError('maxlength')">Title atmost 500 charactes long!</mat-error>
+              <mat-error *ngIf="title.hasError('minlength')">Title needs minimum 10 charactes!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <input matInput placeholder="bedroom" [formControl]="bedroom">
               <mat-hint>Enter bedroom!</mat-hint>
-              <mat-error *ngIf="bedroom.hasError('required')">Name fileld is required</mat-error>
-              <mat-error *ngIf="bedroom.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-              <mat-error *ngIf="bedroom.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+              <mat-error *ngIf="bedroom.hasError('required')">BedRoom fileld is required!</mat-error>
+              <mat-error *ngIf="bedroom.hasError('max')">Needs maximum 100 BedRoom!</mat-error>
+              <mat-error *ngIf="bedroom.hasError('min')">Needs minimum 1 BedRoom!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <input matInput placeholder="kitchen" [formControl]="kitchen">
               <mat-hint>Enter kitchen!</mat-hint>
-              <mat-error *ngIf="kitchen.hasError('required')">Name fileld is required</mat-error>
-              <mat-error *ngIf="kitchen.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-              <mat-error *ngIf="kitchen.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+              <mat-error *ngIf="kitchen.hasError('required')">Kitchen fileld is required!</mat-error>
+              <mat-error *ngIf="kitchen.hasError('max')">Needs maximum 100 kitchen!</mat-error>
+              <mat-error *ngIf="kitchen.hasError('min')">Needs minimum 0 kitchen!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <input matInput placeholder="washroom" [formControl]="washroom">
               <mat-hint>Enter washroom!</mat-hint>
-              <mat-error *ngIf="washroom.hasError('required')">Name fileld is required</mat-error>
-              <mat-error *ngIf="washroom.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-              <mat-error *ngIf="washroom.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+              <mat-error *ngIf="washroom.hasError('required')">Washroom fileld is required!</mat-error>
+              <mat-error *ngIf="washroom.hasError('max')">Needs maximum 100 washroom!</mat-error>
+              <mat-error *ngIf="washroom.hasError('min')">Needs minimum 0 washroom!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <input matInput placeholder="phon" [formControl]="phon">
               <mat-hint>Enter phon!</mat-hint>
-              <mat-error *ngIf="phon.hasError('required')">Name fileld is required</mat-error>
-              <mat-error *ngIf="phon.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-              <mat-error *ngIf="phon.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+              <mat-error *ngIf="phon.hasError('required')">Phon fileld is required!</mat-error>
+              <mat-error *ngIf="phon.hasError('maxlength')">Phon atmost 30 digit long!</mat-error>
+              <mat-error *ngIf="phon.hasError('minlength')">Phon needs minimum 6 digit!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <input matInput placeholder="area" [formControl]="area">
               <mat-hint>Enter area!</mat-hint>
-              <mat-error *ngIf="area.hasError('required')">Name fileld is required</mat-error>
-              <mat-error *ngIf="area.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-              <mat-error *ngIf="area.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+              <mat-error *ngIf="area.hasError('required')">Area fileld is required!</mat-error>
+              <mat-error *ngIf="area.hasError('max')">Area atmost 10,000sqr.ft long!</mat-error>
+              <mat-error *ngIf="area.hasError('min')">Area needs minimum 100sqr.ft long!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <input matInput placeholder="taka" [formControl]="taka">
-              <mat-hint>Enter taka!</mat-hint>
-              <mat-error *ngIf="taka.hasError('required')">Name fileld is required</mat-error>
-              <mat-error *ngIf="taka.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-              <mat-error *ngIf="taka.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+              <mat-hint>Enter Money!</mat-hint>
+              <mat-error *ngIf="taka.hasError('required')">Money fileld is required</mat-error>
+              <mat-error *ngIf="taka.hasError('max')">Enter money atmost BTD 500000</mat-error>
+              <mat-error *ngIf="taka.hasError('min')">Enter money minimum BTD 500</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Select Division" [formControl]="division" (valueChange)="onNameSelected($event)">
+                <mat-option *ngFor="let division of divisionValue" [value]="division.divisionName">{{ division.divisionName }}</mat-option>
+              </mat-select>
+              <mat-hint>Select District!</mat-hint>
+              <mat-error *ngIf="division.hasError('required')">Please Select Division!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Select Location" [formControl]="location">
+                <mat-option *ngFor="let location of locationValue" [value]="location.locationName">{{ location.locationName }}</mat-option>
+              </mat-select>
+              <mat-hint>Select Location!</mat-hint>
+              <mat-error *ngIf="location.hasError('required')">Please Select location!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <textarea matInput placeholder="address" [formControl]="address"></textarea>
               <mat-hint>Enter address!</mat-hint>
-              <mat-error *ngIf="address.hasError('required')">Name fileld is required</mat-error>
-              <mat-error *ngIf="address.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-              <mat-error *ngIf="address.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+              <mat-error *ngIf="address.hasError('required')">Address fileld is required!</mat-error>
+              <mat-error *ngIf="address.hasError('maxlength')">Address atmost 1000 charactes long!</mat-error>
+              <mat-error *ngIf="address.hasError('minlength')">Address needs minimum 5 charactes!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <textarea matInput placeholder="description" [formControl]="description"></textarea>
               <mat-hint>Enter description!</mat-hint>
-              <mat-error *ngIf="description.hasError('required')">Name fileld is required</mat-error>
-              <mat-error *ngIf="description.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
-              <mat-error *ngIf="description.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+              <mat-error *ngIf="description.hasError('required')">Description fileld is required!</mat-error>
+              <mat-error *ngIf="description.hasError('maxlength')">Description atmost 1,000,000 charactes long!</mat-error>
+              <mat-error *ngIf="description.hasError('minlength')">Description needs minimum 100 charactes!</mat-error>
             </mat-form-field>
 
             <button [disabled]='!adsHouse.valid' type="submit" mat-raised-button color="primary" class="form-button">Submit</button>
