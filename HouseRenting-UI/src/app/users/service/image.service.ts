@@ -16,14 +16,14 @@ export class ImageService {
       headers: new HttpHeaders({
       })
     };
-    return this.http.patch(`http://localhost:3000/post/update/${userId}`, fd, httpOptions);
+    return this.http.post('http://localhost:3000/houseimg/create/', fd, httpOptions);
   }
 
-  _uploadCoverImage(fd: any, userId: string) {
+  _uploadCoverImage(fd: any) {
     const httpOptions = {
       headers: new HttpHeaders({
       })
     };
-    return this.http.patch(`http://localhost:3000/post/update/${userId}`, fd, httpOptions);
+    return this.http.post(`http://localhost:3000/houseimg/create/`, fd, httpOptions);
   }
 }
