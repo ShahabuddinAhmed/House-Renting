@@ -28,6 +28,7 @@ import { RouterModule } from '@angular/router';
 import { CreateadsComponent } from './createads/createads.component';
 import { SearchViewComponent } from './search-view/search-view.component';
 import { AddimageComponent } from './addimage/addimage.component';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { AddimageComponent } from './addimage/addimage.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxGalleryModule,
     MatButtonModule,
     MatCheckboxModule,
     MatInputModule,
