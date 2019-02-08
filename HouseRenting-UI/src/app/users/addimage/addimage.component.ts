@@ -15,14 +15,14 @@ export class AddimageComponent implements OnInit {
   public formData: any;
   public storeFile: Array<File>;
   public name1: FormControl;
-  public name2: FormControl;
+  public houseImage: FormControl;
   public customFile: File = null;
 
   private CreateFormControls(): void {
     this.name1 = new FormControl('', [
       Validators.required
     ]);
-    this.name2 = new FormControl('', [
+    this.houseImage = new FormControl('', [
       Validators.required
     ]);
   }
@@ -58,11 +58,11 @@ fileChangeEvent2(fileInput: any) {
 }
 
 upload1() {
-  const userID = '5c49cbb4a2cb7302e022d4cc';
+  const userID = '5c588796a3d93a24d0e4f065';
   const fd = new FormData();
-    fd.append('picture', this.customFile, this.customFile.name);
+    fd.append('houseImage', this.customFile, this.customFile.name);
     fd.append('userId', userID);
-    this._imageService._uploadCoverImage(this.customFile, userID).subscribe(data => {
+    this._imageService._uploadCoverImage(fd).subscribe(data => {
       // console.log(data["message"]);
      console.log(data);
     }, err => {
@@ -71,10 +71,10 @@ upload1() {
 }
 
 upload2() {
-  this.adsID = '5c4fef8d6c190a4090742458';
+  this.adsID = '5c588796a3d93a24d0e4f065';
   this.formData = new FormData();
   for (let i = 0; i < this.filesToUpload.length; i++) {
-    this.formData.append('picture[]', this.filesToUpload[i], this.filesToUpload[i]['name']);
+    this.formData.append('houseImage[]', this.filesToUpload[i], this.filesToUpload[i]['houseImage']);
   }
   console.log(this.filesToUpload);
   this._imageService._uploadImage(this.formData, this.adsID)
