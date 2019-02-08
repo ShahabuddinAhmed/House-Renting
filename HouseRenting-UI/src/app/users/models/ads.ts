@@ -12,6 +12,6 @@ export class House {
   division: string;
   location: string;
   coverImage: string;
-  _date: Date;
+  _date: string;
   userID: string;
 }
