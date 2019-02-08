@@ -13,9 +13,9 @@
               <h4>Change Cover Picture</h4>
           </mdb-card-title>
           <hr>
-          <input [formControl]="name1" type="file" (change)="fileChangeEvent1($event)" placeholder="Upload a file..."/>
+          <input [formControl]="houseImage" type="file" (change)="fileChangeEvent1($event)" placeholder="Upload a file..."/>
 
-          <button [disabled]='!name1.valid' (click)="upload1()" type="submit" mat-raised-button color="primary" class="form-button">Upload</button>
+          <button [disabled]='!houseImage.valid' (click)="upload1()" type="submit" mat-raised-button color="primary" class="form-button">Upload</button>
         </mdb-card-body>
       </mdb-card>
       <br>
@@ -25,16 +25,16 @@
     <div class="col-md-6 offset-3">
       <mdb-card class="signin-card">
 
-        <mdb-card-body class="card-basic-content">
-            <!--Name-->
+        <!-- <mdb-card-body class="card-basic-content">
+
           <mdb-card-title>
               <h4>Add New Multiple Picture</h4>
           </mdb-card-title>
           <hr>
-          <input [formControl]="name2" type="file" (change)="fileChangeEvent2($event)" placeholder="Upload a file..." multiple/>
+          <input [formControl]="houseImage" type="file" (change)="fileChangeEvent2($event)" placeholder="Upload a file..." multiple/>
 
-          <button [disabled]='!name2.valid' (click)="upload2()" type="submit" mat-raised-button color="primary" class="form-button">Upload</button>
-        </mdb-card-body>
+          <button [disabled]='!houseImage.valid' (click)="upload2()" type="submit" mat-raised-button color="primary" class="form-button">Upload</button>
+        </mdb-card-body> -->
       </mdb-card>
     </div>
   </div>
