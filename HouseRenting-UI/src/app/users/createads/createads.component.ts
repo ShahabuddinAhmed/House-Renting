@@ -7,6 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Division } from '../../admin/models/division';
 import { Location } from '../../admin/models/location';
 import { LocationService } from 'src/app/admin/service/location.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-createads',
@@ -142,6 +143,7 @@ export class CreateadsComponent implements OnInit {
     this.house.division = this.division.value;
     this.house.location = this.location.value;
     this.house.description = this.description.value;
+    this.house._date = formatDate(new Date(), 'dd MMM yyyy', 'en');
     this.house.userID = this.userID;
     this._userService.createHouseAds(this.house)
     .subscribe(data => {
