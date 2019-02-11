@@ -25,7 +25,7 @@
     <div class="col-md-6 offset-3">
       <mdb-card class="signin-card">
 
-        <!-- <mdb-card-body class="card-basic-content">
+        <mdb-card-body class="card-basic-content">
 
           <mdb-card-title>
               <h4>Add New Multiple Picture</h4>
@@ -34,7 +34,7 @@
           <input [formControl]="houseImage" type="file" (change)="fileChangeEvent2($event)" placeholder="Upload a file..." multiple/>
 
           <button [disabled]='!houseImage.valid' (click)="upload2()" type="submit" mat-raised-button color="primary" class="form-button">Upload</button>
-        </mdb-card-body> -->
+        </mdb-card-body>
       </mdb-card>
     </div>
   </div>
