@@ -29,6 +29,7 @@ import { CreateadsComponent } from './createads/createads.component';
 import { SearchViewComponent } from './search-view/search-view.component';
 import { AddimageComponent } from './addimage/addimage.component';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { DetailAdsComponent } from './detail-ads/detail-ads.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
     ViewAdsComponent,
     CreateadsComponent,
     SearchViewComponent,
-    AddimageComponent
+    AddimageComponent,
+    DetailAdsComponent
   ]
 })
 export class UsersModule { }
