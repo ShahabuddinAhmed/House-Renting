@@ -27,6 +27,7 @@
               <mat-error *ngIf="bedroom.hasError('required')">BedRoom fileld is required!</mat-error>
               <mat-error *ngIf="bedroom.hasError('max')">Needs maximum 100 BedRoom!</mat-error>
               <mat-error *ngIf="bedroom.hasError('min')">Needs minimum 1 BedRoom!</mat-error>
+              <mat-error *ngIf="bedroom.hasError('pattern')">This field required in English number!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
@@ -35,6 +36,7 @@
               <mat-error *ngIf="kitchen.hasError('required')">Kitchen fileld is required!</mat-error>
               <mat-error *ngIf="kitchen.hasError('max')">Needs maximum 100 kitchen!</mat-error>
               <mat-error *ngIf="kitchen.hasError('min')">Needs minimum 0 kitchen!</mat-error>
+              <mat-error *ngIf="bedroom.hasError('pattern')">This field required in English number!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
@@ -43,6 +45,7 @@
               <mat-error *ngIf="washroom.hasError('required')">Washroom fileld is required!</mat-error>
               <mat-error *ngIf="washroom.hasError('max')">Needs maximum 100 washroom!</mat-error>
               <mat-error *ngIf="washroom.hasError('min')">Needs minimum 0 washroom!</mat-error>
+              <mat-error *ngIf="bedroom.hasError('pattern')">This field required in English number!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
@@ -59,6 +62,7 @@
               <mat-error *ngIf="area.hasError('required')">Area fileld is required!</mat-error>
               <mat-error *ngIf="area.hasError('max')">Area atmost 10,000sqr.ft long!</mat-error>
               <mat-error *ngIf="area.hasError('min')">Area needs minimum 100sqr.ft long!</mat-error>
+              <mat-error *ngIf="bedroom.hasError('pattern')">This field required in English number!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
@@ -67,6 +71,7 @@
               <mat-error *ngIf="taka.hasError('required')">Money fileld is required</mat-error>
               <mat-error *ngIf="taka.hasError('max')">Enter money atmost BTD 500000</mat-error>
               <mat-error *ngIf="taka.hasError('min')">Enter money minimum BTD 500</mat-error>
+              <mat-error *ngIf="bedroom.hasError('pattern')">This field required in English number!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
