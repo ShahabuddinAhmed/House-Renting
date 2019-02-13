@@ -30,7 +30,8 @@
               </div>
               <div class="col-md-5">
                 <mat-form-field class="example-full-width">
-                  <mat-select placeholder="Select Location" [formControl]="location">
+                  <mat-select placeholder="Any Location" [formControl]="location">
+                    <mat-option value="0"> Any Location</mat-option>
                     <mat-option *ngFor="let location of _location" [value]="location.locationName">{{ location.locationName }}</mat-option>
                   </mat-select>
                   <mat-hint>Select Location!</mat-hint>
@@ -51,7 +52,8 @@
               </div>
               <div class="col-md-5">
                 <mat-form-field class="example-full-width">
-                  <mat-select placeholder="Select Max Price" [formControl]="maxMoney">
+                  <mat-select placeholder="Any Price" [formControl]="maxMoney">
+                      <mat-option value="0"> Any Price</mat-option>
                     <mat-option *ngFor="let _maxMoneyValue of maxMoneyValue" [value]="_maxMoneyValue.maxMoneyName">{{ _maxMoneyValue.maxMoneyName }}</mat-option>
                   </mat-select>
                   <mat-hint>Select Max Price!</mat-hint>
@@ -72,7 +74,8 @@
               </div>
               <div class="col-md-5">
                 <mat-form-field class="example-full-width">
-                  <mat-select placeholder="Select Max Area" [formControl]="maxArea">
+                  <mat-select placeholder="Any Area" [formControl]="maxArea">
+                      <mat-option value="0"> Any Area</mat-option>
                     <mat-option *ngFor="let maxArea of _maxArea" [value]="maxArea.maxAreaName">{{ maxArea.maxAreaName }}</mat-option>
                   </mat-select>
                   <mat-hint>Select Max Area!</mat-hint>
@@ -105,85 +108,18 @@
 <!-- product Galarry -->
   <div>
     <ul class="gallery">
-      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
+
+      <li *ngFor="let house of _house" ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
+        <img src="http://localhost:3000/image/{{ house.coverImage }}" alt="">
         <div class="galleryInfo">
-          <h2>Title</h2>
-          <h3>Name</h3>
-          <p>Description</p>
+          <h2>{{ house.title }}</h2>
+          <h3><b>BTD-{{ house.taka }}=/</b></h3>
+          <p>
+            <span class="pull-left"><h6>{{ house.location }}, {{ house.division }}</h6></span>
+            <span class="pull-right"><a routerLink="detail/{{house._id}}" routerLinkActive="router-link-active"><h6>View Details</h6></a></span>
+          </p>
         </div>
       </li>
 
-      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-        <div class="galleryInfo">
-          <h2>Title</h2>
-          <h3>Name</h3>
-          <p>Description</p>
-        </div>
-      </li>
-
-      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-        <div class="galleryInfo">
-          <h2>Title</h2>
-          <h3>Name</h3>
-          <p>Description</p>
-        </div>
-      </li>
-
-      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-        <div class="galleryInfo">
-          <h2>Title</h2>
-          <h3>Name</h3>
-          <p>Description</p>
-        </div>
-      </li>
-
-      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-        <div class="galleryInfo">
-          <h2>Title</h2>
-          <h3>Name</h3>
-          <p>Description</p>
-        </div>
-      </li>
-
-      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-        <div class="galleryInfo">
-          <h2>Title</h2>
-          <h3>Name</h3>
-          <p>Description</p>
-        </div>
-      </li>
-
-      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-        <div class="galleryInfo">
-          <h2>Title</h2>
-          <h3>Name</h3>
-          <p>Description</p>
-        </div>
-      </li>
-
-      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-        <div class="galleryInfo">
-          <h2>Title</h2>
-          <h3>Name</h3>
-          <p>Description</p>
-        </div>
-      </li>
-
-      <li ng-animate="'animate'" class="gallery" ng-repeat="item in gallery | orderBy: galleryOrder:direction">
-        <img src="http://ec.europa.eu/research/headlines/news/images/11_12_17_small.jpg" alt="">
-        <div class="galleryInfo">
-          <h2>Title</h2>
-          <h3>Name</h3>
-          <p>Description</p>
-        </div>
-      </li>
     </ul>
   </div>
