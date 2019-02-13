@@ -16,67 +16,13 @@ export class UserComponent implements OnInit {
   public userID: string;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  public _house: House[];
 
   constructor(private _userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    // this.getUserID();
-    this.galleryOptions = [
-      {
-        width: '600px',
-        height: '400px',
-        thumbnailsColumns: 4,
-        imageAnimation: NgxGalleryAnimation.Slide
-      },
-      // max-width 800
-      {
-          breakpoint: 800,
-          width: '100%',
-          height: '600px',
-          imagePercent: 80,
-          thumbnailsPercent: 20,
-          thumbnailsMargin: 20,
-          thumbnailMargin: 20
-      },
-      // max-width 400
-      {
-        breakpoint: 400,
-        preview: false
-      }
-    ];
-
-    this.galleryImages = [
-      {
-        small: 'assets/images/1.jpg',
-        medium: 'assets/images/1.jpg',
-        big: 'assets/images/1.jpg'
-    },
-    {
-        small: 'assets/images/1.jpg',
-        medium: 'assets/images/1.jpg',
-        big: 'assets/images/1.jpg'
-      },
-      {
-        small: 'assets/images/1.jpg',
-        medium: 'assets/images/1.jpg',
-        big: 'assets/images/1.jpg'
-      },
-      {
-        small: 'assets/images/1.jpg',
-        medium: 'assets/images/1.jpg',
-        big: 'assets/images/1.jpg'
-      },
-      {
-        small: 'assets/images/1.jpg',
-        medium: 'assets/images/1.jpg',
-        big: 'assets/images/1.jpg'
-      },
-      {
-        small: 'assets/images/1.jpg',
-        medium: 'assets/images/1.jpg',
-        big: 'assets/images/1.jpg'
-      }
-    ];
+    this.getUserID();
+    this.getUserAds(this.userID);
   }
 
   onSubmit() {
@@ -87,6 +33,17 @@ export class UserComponent implements OnInit {
     const token = localStorage.getItem('token');
     const tokenPayload = this.jwtHelper.decodeToken(token);
     this.userID = tokenPayload.userID;
+  }
+
+  private getUserAds(userID: string) {
+    this._userService._getHouseAdsInfo(userID)
+      .subscribe(data => {
+        console.log(data);
+        this._house = data;
+      },
+      err => {
+        console.log(err);
+      });
   }
 
 }
