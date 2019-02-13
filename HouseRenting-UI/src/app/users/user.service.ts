@@ -49,8 +49,8 @@ export class UserService {
     return this.http.patch(`http://localhost:3000/user/update/${id}`, register, httpOptions);
   }
 
-  _getHouseAdsInfo(id: string): Observable<House> {
-    return this.http.get<House>(`http://localhost:3000/houseads/${id}`);
+  _getHouseAdsInfo(id: string): Observable<House[]> {
+    return this.http.get<House[]>(`http://localhost:3000/houseads/${id}`);
   }
 
   editHouseAds(id: string, _house: House) {
