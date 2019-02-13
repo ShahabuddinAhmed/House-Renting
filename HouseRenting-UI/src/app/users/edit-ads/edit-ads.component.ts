@@ -119,7 +119,7 @@ export class EditAdsComponent implements OnInit {
     this.createFormGroup();
     this.getHouseAdsID();
     this.getDivision();
-    this.getHouseAdsInfo(this.houseID);
+    // this.getHouseAdsInfo(this.houseID);
   }
 
   onSubmit() {
@@ -156,7 +156,8 @@ export class EditAdsComponent implements OnInit {
   }
 
   private getHouseAdsInfo(id: string) {
-    this._userService._getHouseAdsInfo(id).subscribe(data => {
+    this._userService._editHouseAdsInfo(id)
+    .subscribe(data => {
       this.house = data;
       this.setFormControlvalue();
     },
