@@ -14,6 +14,8 @@ import { MinArea } from '../admin/models/min-area';
 import { MaxArea } from '../admin/models/max-area';
 import { RoomService } from '../admin/service/room.service';
 import { RoomNumber } from '../admin/models/room';
+import { HomeService } from '../service/home.service';
+import { House } from '../users/models/ads';
 
 @Component({
   selector: 'app-home',
@@ -41,6 +43,7 @@ export class HomeComponent implements OnInit {
   public _minArea: MinArea[];
   public _maxArea: MaxArea[];
   public getRoomNumber: RoomNumber[];
+  public _house: House[];
 
   private createForm(): void {
     this.Search = new FormGroup( {
@@ -90,7 +93,8 @@ export class HomeComponent implements OnInit {
     private _locationService: LocationService,
     private _moneyService: MoneyService,
     private _areaService: AreaService,
-    private _roomService: RoomService
+    private _roomService: RoomService,
+    private _homeService: HomeService
   ) { }
 
   ngOnInit() {
@@ -100,10 +104,29 @@ export class HomeComponent implements OnInit {
     this.getMinMoney();
     this.getMinArea();
     this.getRoom();
+    this.getInfo();
+    this.getRoomInfo();
   }
 
   onSubmit() {
 
+  }
+
+  private getInfo() {
+    this.location.setValue('0');
+    this.maxMoney.setValue('0');
+    this.maxArea.setValue('0');
+  }
+
+  private getRoomInfo() {
+    this._homeService._getHouseAdsInfo()
+    .subscribe(data => {
+      console.log(data);
+      this._house = data;
+    },
+    err => {
+      console.log(err);
+    });
   }
 
   private getDivision() {
