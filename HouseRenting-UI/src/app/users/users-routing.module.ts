@@ -10,6 +10,7 @@ import { UserComponent } from './user/user.component';
 import { EditAdsComponent } from './edit-ads/edit-ads.component';
 import { CreateadsComponent } from './createads/createads.component';
 import { AddimageComponent } from './addimage/addimage.component';
+import { DetailAdsComponent } from './detail-ads/detail-ads.component';
 
 const routes: Routes = [
   { path: 'register', component: SignupComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'ads', component: ViewAdsComponent },
   { path: 'editads', component: EditAdsComponent },
   { path: 'createads', component: CreateadsComponent },
-  { path: 'addimage/:id', component: AddimageComponent }
+  { path: 'addimage/:id', component: AddimageComponent },
+  { path: 'detail/:id', component: DetailAdsComponent },
 ];
 
 @NgModule({
