@@ -50,7 +50,7 @@ export class UserService {
   }
 
   _getHouseAdsInfo(id: string): Observable<House[]> {
-    return this.http.get<House[]>(`http://localhost:3000/houseads/${id}`);
+    return this.http.get<House[]>(`http://localhost:3000/houseads/user/${id}`);
   }
 
   editHouseAds(id: string, _house: House) {
