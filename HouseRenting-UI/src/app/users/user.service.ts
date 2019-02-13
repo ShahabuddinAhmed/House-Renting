@@ -53,6 +53,10 @@ export class UserService {
     return this.http.get<House[]>(`http://localhost:3000/houseads/user/${id}`);
   }
 
+  _editHouseAdsInfo(id: string): Observable<House> {
+    return this.http.get<House>(`http://localhost:3000/houseads/${id}`);
+  }
+
   editHouseAds(id: string, _house: House) {
     const httpOptions = {
       headers: new HttpHeaders({
