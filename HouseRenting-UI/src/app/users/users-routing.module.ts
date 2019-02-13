@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'view', component: ViewProfileComponent },
   { path: 'edit', component: EditProfileComponent },
   { path: 'ads', component: ViewAdsComponent },
-  { path: 'editads', component: EditAdsComponent },
+  { path: 'editads/:id', component: EditAdsComponent },
   { path: 'createads', component: CreateadsComponent },
   { path: 'addimage/:id', component: AddimageComponent },
   { path: 'detail/:id', component: DetailAdsComponent },
