@@ -47,7 +47,7 @@ export class AdminPanelComponent implements OnInit {
     this.adminPassword = new FormControl('', [
       Validators.required,
       Validators.minLength(6),
-      Validators.maxLength(30)
+      Validators.maxLength(100)
     ]);
     this.adminConfirmPassword = new FormControl('', [
       Validators.required
@@ -71,7 +71,7 @@ export class AdminPanelComponent implements OnInit {
     this._accountService._adminRegister(this.register)
     .subscribe(data => {
       console.log(data);
-      this.router.navigate(['/admin']);
+      this.router.navigate(['admin']);
     },
     error => {
       console.error(error);
