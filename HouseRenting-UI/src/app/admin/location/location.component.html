@@ -16,7 +16,7 @@
           <form class="example-form" [formGroup]="newDistict" (ngSubmit)="onSubmitDistict()" novalidate>
             <mat-form-field class="example-full-width">
               <mat-select placeholder="Division" [formControl]="selectDivision">
-                <mat-option *ngFor="let food of foods" [value]="food.value">{{food.value}}</mat-option>
+                <mat-option *ngFor="let _division of division" [value]="_division.divisionName">{{ _division.divisionName }}</mat-option>
               </mat-select>
               <mat-hint>Select a Division!</mat-hint>
             </mat-form-field>
