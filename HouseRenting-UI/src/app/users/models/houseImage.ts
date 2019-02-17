@@ -1,4 +1,6 @@
 export class HouseImage {
-  houseImage: string;
+  small: string;
+  medium: string;
+  big: string;
   houseAdsID: string;
 }
