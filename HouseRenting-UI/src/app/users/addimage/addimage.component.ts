@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ImageService } from '../service/image.service';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -14,22 +14,23 @@ export class AddimageComponent implements OnInit {
   public adsID: string;
   public formData: any;
   public storeFile: Array<File>;
-  public name1: FormControl;
+  public changeImage: FormControl;
   public houseImage: FormControl;
   public customFile: File = null;
 
   private CreateFormControls(): void {
-    this.name1 = new FormControl('', [
+    this.changeImage = new FormControl('', [
       Validators.required
     ]);
     this.houseImage = new FormControl('', [
       Validators.required
     ]);
   }
-  constructor(private _imageService: ImageService, private router: Router) { }
+  constructor(private _imageService: ImageService, private router: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.CreateFormControls();
+    this.getHouseAdsID();
   }
 
 //   upload() {
@@ -46,45 +47,69 @@ export class AddimageComponent implements OnInit {
 //     //     .subscribe(files => console.log('files', files));
 // }
 
-fileChangeEvent1(fileInput: any) {
-  this.customFile = fileInput.target.files[0];
-  // this.product.photo = fileInput.target.files[0]['name'];
-  console.log(this.customFile);
-}
+  private getHouseAdsID() {
+    this.activeRoute.params.subscribe(param => {
+      this.adsID = param['id'];
+      console.log(this.adsID);
+    },
+    err => {
+      console.log(err);
+    });
+  }
 
-fileChangeEvent2(fileInput: any) {
+  fileChangeEvent1(fileInput: any) {
+    this.customFile = fileInput.target.files[0];
+    // this.product.photo = fileInput.target.files[0]['name'];
+    console.log(this.customFile);
+  }
+
+  // fileChangeEvent2(fileInput: any) {
+  //   this.customFile = fileInput.target.files[0];
+  //     // this.product.photo = fileInput.target.files[0]['name'];
+  // }
+
+  upload1() {
+    const fd = new FormData();
+      fd.append('small', this.customFile, this.customFile.name);
+      fd.append('houseAdsID', this.adsID);
+      this._imageService._uploadCoverImage(fd).subscribe(data => {
+        // console.log(data["message"]);
+      console.log(data);
+      }, err => {
+        console.log(err);
+      });
+  }
+
+  // upload2() {
+  //   const fd = new FormData();
+  //   fd.append('small', this.customFile, this.customFile.name);
+  //   fd.append('houseAdsID', this.adsID);
+  //   this._imageService._uploadCoverImage(fd).subscribe(data => {
+  //     // console.log(data["message"]);
+  //     console.log(data);
+  //   }, err => {
+  //     console.log(err);
+  //   });
+  // }
+
+  fileChangeEvent2(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
     // this.product.photo = fileInput.target.files[0]['name'];
 }
 
-upload1() {
-  const userID = '5c588796a3d93a24d0e4f065';
-  const fd = new FormData();
-    fd.append('houseImage', this.customFile, this.customFile.name);
-    fd.append('userId', userID);
-    this._imageService._uploadCoverImage(fd).subscribe(data => {
-      // console.log(data["message"]);
-     console.log(data);
-    }, err => {
-      console.log(err);
-    });
-}
-
-upload2() {
-  this.adsID = '5c588796a3d93a24d0e4f065';
-  this.formData = new FormData();
-  for (let i = 0; i < this.filesToUpload.length; i++) {
-    this.formData.append('houseImage[]', this.filesToUpload[i], this.filesToUpload[i]['houseImage']);
+  upload2() {
+    for (let i = 0; i < this.filesToUpload.length; i++) {
+      const fd = new FormData();
+      fd.append('small', this.filesToUpload[i], this.filesToUpload[i][name]);
+      fd.append('houseAdsID', this.adsID);
+      this._imageService._uploadImage(fd, this.adsID)
+      .subscribe(data => {
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      });
+    }
   }
-  console.log(this.filesToUpload);
-  this._imageService._uploadImage(this.formData, this.adsID)
-  .subscribe(data => {
-    console.log(data);
-  },
-  err => {
-    console.log(err);
-  }
-  );
-}
 
 }
