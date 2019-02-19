@@ -13,9 +13,9 @@
               <h4>Change Cover Picture</h4>
           </mdb-card-title>
           <hr>
-          <input [formControl]="houseImage" type="file" (change)="fileChangeEvent1($event)" placeholder="Upload a file..."/>
+          <input [formControl]="changeImage" type="file" (change)="fileChangeEvent1($event)" placeholder="Upload a file..."/>
 
-          <button [disabled]='!houseImage.valid' (click)="upload1()" type="submit" mat-raised-button color="primary" class="form-button">Upload</button>
+          <button [disabled]='!changeImage.valid' (click)="upload1()" type="submit" mat-raised-button color="primary" class="form-button">Upload</button>
         </mdb-card-body>
       </mdb-card>
       <br>
@@ -28,7 +28,7 @@
         <mdb-card-body class="card-basic-content">
 
           <mdb-card-title>
-              <h4>Add New Multiple Picture</h4>
+              <h4>Add Multiple House Picture</h4>
           </mdb-card-title>
           <hr>
           <input [formControl]="houseImage" type="file" (change)="fileChangeEvent2($event)" placeholder="Upload a file..." multiple/>
