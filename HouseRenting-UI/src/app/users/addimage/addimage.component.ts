@@ -72,9 +72,10 @@ export class AddimageComponent implements OnInit {
     const fd = new FormData();
       fd.append('small', this.customFile, this.customFile.name);
       fd.append('houseAdsID', this.adsID);
-      this._imageService._uploadCoverImage(fd).subscribe(data => {
+      this._imageService._uploadCoverImage(fd, this.adsID).subscribe(data => {
         // console.log(data["message"]);
       console.log(data);
+      this.router.navigate(['user']);
       }, err => {
         console.log(err);
       });
@@ -105,6 +106,7 @@ export class AddimageComponent implements OnInit {
       this._imageService._uploadImage(fd, this.adsID)
       .subscribe(data => {
         console.log(data);
+        this.router.navigate(['user']);
       },
       err => {
         console.log(err);
