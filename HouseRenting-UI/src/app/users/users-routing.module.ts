@@ -1,6 +1,6 @@
-import { ViewAdsComponent } from './view-ads/view-ads.component';
+import { UserGuardService as UserGuard} from './../auth/user-guard.service';
+import { AuthGuardService as AuthGuard } from './../auth/auth-guard.service';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -15,15 +15,12 @@ import { DetailAdsComponent } from './detail-ads/detail-ads.component';
 const routes: Routes = [
   { path: 'register', component: SignupComponent },
   { path: 'login', component: SigninComponent },
-  { path: 'profile', component: ViewProfileComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'view', component: ViewProfileComponent },
-  { path: 'edit', component: EditProfileComponent },
-  { path: 'ads', component: ViewAdsComponent },
-  { path: 'editads/:id', component: EditAdsComponent },
-  { path: 'createads', component: CreateadsComponent },
-  { path: 'addimage/:id', component: AddimageComponent },
-  { path: 'detail/:id', component: DetailAdsComponent },
+  { path: 'user', component: UserComponent, canActivate : [UserGuard], data: { expectedRole: 'User' } },
+  { path: 'edit/:id', component: EditProfileComponent, canActivate : [UserGuard], data: { expectedRole: 'User' } },
+  { path: 'editads/:id', component: EditAdsComponent, canActivate : [UserGuard], data: { expectedRole: 'User' } },
+  { path: 'createads', component: CreateadsComponent, canActivate : [UserGuard], data: { expectedRole: 'User' } },
+  { path: 'addimage/:id', component: AddimageComponent, canActivate : [UserGuard], data: { expectedRole: 'User' } },
+  { path: 'detail/:id', component: DetailAdsComponent }
 ];
 
 @NgModule({
