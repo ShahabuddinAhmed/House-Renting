@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
   public _maxArea: MaxArea[];
   public getRoomNumber: RoomNumber[];
   public _house: House[];
+  public _search: House[];
 
   private createForm(): void {
     this.Search = new FormGroup( {
@@ -106,10 +107,42 @@ export class HomeComponent implements OnInit {
     this.getRoom();
     this.getInfo();
     this.getRoomInfo();
+    this._homeService.getData()
+    .subscribe(data => {
+      console.log(data);
+    },
+    err => {
+      console.log(err);
+    });
   }
 
   onSubmit() {
+    this.search = new Search();
+    this.search.district = this.district.value;
+    this.search.location = this.location.value;
+    this.search.minMoney = this.minMoney.value;
+    this.search.minArea = this.minArea.value;
+    this.search.roomNumber = this.roomNumber.value;
+    if (this.maxMoney.value > 0) {
+      this.search.maxMoney = this.maxMoney.value;
+    } else {
+      this.search.maxMoney = 50000;
+    }
+    if (this.maxArea.value > 0) {
+      this.search.maxArea = this.maxArea.value;
+    } else {
+      this.search.maxArea = 4200;
+    }
+    this._homeService._searchAds(this.search)
+    .subscribe(data => {
+      console.log(data);
+      this._search = data;
+      this.router.navigate(['']);
 
+    },
+    err => {
+      console.log(err);
+    });
   }
 
   private getInfo() {
