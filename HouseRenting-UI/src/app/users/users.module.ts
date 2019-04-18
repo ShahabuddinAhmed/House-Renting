@@ -1,5 +1,4 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -23,7 +22,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EditAdsComponent } from './edit-ads/edit-ads.component';
-import { ViewAdsComponent } from './view-ads/view-ads.component';
 import { RouterModule } from '@angular/router';
 import { CreateadsComponent } from './createads/createads.component';
 import { SearchViewComponent } from './search-view/search-view.component';
@@ -58,11 +56,9 @@ import { DetailAdsComponent } from './detail-ads/detail-ads.component';
   declarations: [
     SignupComponent,
     SigninComponent,
-    ViewProfileComponent,
     UserComponent,
     EditProfileComponent,
     EditAdsComponent,
-    ViewAdsComponent,
     CreateadsComponent,
     SearchViewComponent,
     AddimageComponent,
