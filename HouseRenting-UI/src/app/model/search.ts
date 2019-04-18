@@ -1,9 +1,9 @@
 export class Search {
   district: string;
   location: string;
-  minMoney: string;
-  maxMoney: string;
-  minArea: string;
-  maxArea: string;
-  roomNumber: string;
+  minMoney: number;
+  maxMoney: number;
+  minArea: number;
+  maxArea: number;
+  roomNumber: number;
 }
