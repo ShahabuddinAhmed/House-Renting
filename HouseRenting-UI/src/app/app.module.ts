@@ -1,3 +1,5 @@
+import { CommonService } from './auth/common.service';
+import { AuthService } from './auth/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -31,6 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { UserService } from './users/user.service';
+import { RoleGuardService } from './auth/role-guard.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +73,13 @@ import { NgxGalleryModule } from 'ngx-gallery';
     MDBBootstrapModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuardService,
+    CommonService,
+    UserService,
+    RoleGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
