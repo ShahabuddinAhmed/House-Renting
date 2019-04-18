@@ -20,12 +20,12 @@ export class ImageService {
     return this.http.post('http://localhost:3000/houseimg/create/', fd, httpOptions);
   }
 
-  _uploadCoverImage(fd: any) {
+  _uploadCoverImage(fd: any, id: string) {
     const httpOptions = {
       headers: new HttpHeaders({
       })
     };
-    return this.http.post(`http://localhost:3000/houseimg/create/`, fd, httpOptions);
+    return this.http.patch(`http://localhost:3000/coverimg/update/${id}`, fd, httpOptions);
   }
 
   getImage(id: string): Observable<HouseImage[]> {
