@@ -50,7 +50,7 @@ export class SigninComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
       this._userService.setToken(data);
-      this.router.navigate(['user']);
+      this.router.navigate(['/user']);
       },
       err => {
         console.log(err);
