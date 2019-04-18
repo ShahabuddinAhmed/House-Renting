@@ -1,3 +1,4 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Injectable } from '@angular/core';
 import { Register } from './models/register';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -6,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Login } from './models/login';
 import { House } from './models/ads';
+import { Users } from './models/user';
 
 
 @Injectable({
@@ -14,6 +16,8 @@ import { House } from './models/ads';
 export class UserService {
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  jwtHelper = new JwtHelperService();
 
   userRegister(_register: Register) {
     const httpOptions = {
@@ -83,5 +87,19 @@ export class UserService {
 
   setToken(auth: any) {
     localStorage.setItem('token', auth.token);
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  loggedOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 }
