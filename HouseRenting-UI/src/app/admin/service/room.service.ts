@@ -19,14 +19,14 @@ export class RoomService {
       })
     };
 
-    return this.http.post('http://localhost:3000/admin/division', _room, httpOptions);
+    return this.http.post('http://localhost:3000/room/create', _room, httpOptions);
   }
 
   _getRoom(): Observable<RoomNumber[]> {
-    return this.http.get<RoomNumber[]>('http://localhost:3000/admin/minarea');
+    return this.http.get<RoomNumber[]>('http://localhost:3000/room/all');
   }
 
   _deleteRoom(id: string) {
-    return this.http.delete(`http://localhost:3000/admin/delete/${id}`);
+    return this.http.delete(`http://localhost:3000/room/delete/${id}`);
   }
 }
