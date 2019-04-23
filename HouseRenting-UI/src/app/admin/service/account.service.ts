@@ -1,3 +1,4 @@
+import { Admins } from './../models/admin';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -30,7 +31,7 @@ export class AccountService {
       })
     };
 
-    return this.http.post('http://localhost:3000/user/login', _login, httpOptions);
+    return this.http.post('http://localhost:3000/admin/login', _login, httpOptions);
   }
 
   _getAllAdmin(): Observable<AdminRegister[]> {
@@ -39,5 +40,28 @@ export class AccountService {
 
   _deleteAdmin(id: string) {
     return this.http.delete(`http://localhost:3000/admin/delete/${id}`);
+  }
+
+  setToken(auth: any) {
+    localStorage.setItem('token', auth.token);
+  }
+
+  _getAdminInfo(id: string): Observable<Admins> {
+    return this.http.get<Admins>(`http://localhost:3000/admin/${id}`);
+  }
+
+  updateAdmin(id: string, register: AdminRegister) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.patch(`http://localhost:3000/admin/update/${id}`, register, httpOptions);
+  }
+
+  loggedOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 }
