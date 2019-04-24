@@ -20,7 +20,7 @@ export class AreaService {
       })
     };
 
-    return this.http.post('http://localhost:3000/admin/minarea', _area, httpOptions);
+    return this.http.post('http://localhost:3000/minarea/create', _area, httpOptions);
   }
 
   _addMaxArea(_area: MaxArea) {
@@ -30,22 +30,26 @@ export class AreaService {
       })
     };
 
-    return this.http.post('http://localhost:3000/admin/maxarea', _area, httpOptions);
+    return this.http.post('http://localhost:3000/maxarea/create', _area, httpOptions);
   }
 
   _getMinArea(): Observable<MinArea[]> {
-    return this.http.get<MinArea[]>('http://localhost:3000/admin/minarea');
+    return this.http.get<MinArea[]>('http://localhost:3000/minarea/all');
   }
 
   _getMaxArea(): Observable<MaxArea[]> {
-    return this.http.get<MaxArea[]>('http://localhost:3000/admin/maxarea');
+    return this.http.get<MaxArea[]>('http://localhost:3000/maxarea/all');
+  }
+
+  selectedMaxArea(area: number): Observable<MaxArea[]> {
+    return this.http.get<MaxArea[]>(`http://localhost:3000/maxarea/${area}`);
   }
 
   _deleteMinArea(id: string) {
-    return this.http.delete(`http://localhost:3000/admin/delete/${id}`);
+    return this.http.delete(`http://localhost:3000/minarea/delete/${id}`);
   }
 
   _deleteMaxArea(id: string) {
-    return this.http.delete(`http://localhost:3000/admin/delete/${id}`);
+    return this.http.delete(`http://localhost:3000/maxarea/delete/${id}`);
   }
 }
