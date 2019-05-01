@@ -19,15 +19,15 @@ export class DivisionService {
       })
     };
 
-    return this.http.post('http://localhost:3000/admin/division', _division, httpOptions);
+    return this.http.post('http://localhost:3000/division/create', _division, httpOptions);
   }
 
   _getDivision(): Observable<Division[]> {
-    return this.http.get<Division[]>('http://localhost:3000/admin/minarea');
+    return this.http.get<Division[]>('http://localhost:3000/division/all');
   }
 
   _deleteDivision(id: string) {
-    return this.http.delete(`http://localhost:3000/admin/delete/${id}`);
+    return this.http.delete(`http://localhost:3000/division/delete/${id}`);
   }
 
 }
