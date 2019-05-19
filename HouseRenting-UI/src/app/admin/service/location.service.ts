@@ -20,18 +20,22 @@ export class LocationService {
       })
     };
 
-    return this.http.post('http://localhost:3000/admin/division', _location, httpOptions);
+    return this.http.post('http://localhost:3000/location/create', _location, httpOptions);
   }
 
   _getLocation(): Observable<Location[]> {
-    return this.http.get<Location[]>('http://localhost:3000/admin/minarea');
+    return this.http.get<Location[]>('http://localhost:3000/location/all');
+  }
+
+  selectLocation(_location: string): Observable<Location[]> {
+    return this.http.get<Location[]>(`http://localhost:3000/location/${_location}`);
   }
 
   _deleteLocation(id: string) {
-    return this.http.delete(`http://localhost:3000/admin/delete/${id}`);
+    return this.http.delete(`http://localhost:3000/location/delete/${id}`);
   }
 
   _getDivision(): Observable<Division[]> {
-    return this.http.get<Division[]>('http://localhost:3000/admin/minarea');
+    return this.http.get<Division[]>('http://localhost:3000/division/all');
   }
 }
