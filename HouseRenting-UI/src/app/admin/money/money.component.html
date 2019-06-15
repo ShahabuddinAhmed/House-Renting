@@ -1,3 +1,109 @@
-<p>
-  money works!
-</p>
+<app-sidebar></app-sidebar>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-6 offset-md-3" style="padding: 0px;">
+      <h4>All Money List</h4>
+      <mdb-card class="testimonial-card">
+        <!--Bacground color-->
+        <div class="card-up aqua-gradient">
+            <br>
+            <h4>Min Money List</h4>
+            <br>
+        </div>
+
+        <!--Avatar-->
+
+        <mdb-card-body>
+          <!--Name-->
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let _minMoneyValue of minMoneyValue">
+              {{ _minMoneyValue.minMoneyName }}
+              <span class="pull-right">
+                <button mdbBtn type="button" gradient="blue" mdbWavesEffect class="rounded" (click)="deleteMinMoney(_minMoneyValue._id)">Delete</button>
+              </span>
+            </li>
+
+          </ul>
+        </mdb-card-body>
+      </mdb-card>
+      <br>
+      <br>
+      <mdb-card class="testimonial-card">
+        <!--Bacground color-->
+        <div class="card-up aqua-gradient">
+            <br>
+            <h4>Max Money List</h4>
+            <br>
+        </div>
+
+        <!--Avatar-->
+
+        <mdb-card-body>
+          <!--Name-->
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let _maxMoneyValue of maxMoneyValue">
+              {{ _maxMoneyValue.maxMoneyName }}
+              <span class="pull-right">
+                <button mdbBtn type="button" gradient="blue" mdbWavesEffect class="rounded" (click)="deleteMaxMoney(_maxMoneyValue._id)">Delete</button>
+              </span>
+            </li>
+
+          </ul>
+        </mdb-card-body>
+      </mdb-card>
+      <br> <br>
+    </div>
+    <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
+      <mdb-card class="signin-card">
+
+        <mdb-card-body class="card-basic-content">
+            <!--Name-->
+          <mdb-card-title>
+              <h4>Add Min Money</h4>
+          </mdb-card-title>
+          <hr>
+          <form class="example-form" [formGroup]="MinMoney" (ngSubmit)="onSubmitMinMoney()" novalidate>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Min Money" [formControl]="minMoney">
+              <mat-hint>Enter Min Money!</mat-hint>
+              <mat-error *ngIf="minMoney.hasError('required')">Please etner Min Money!</mat-error>
+              <mat-error *ngIf="minMoney.hasError('max')">Please etner less than 500000 Money!</mat-error>
+              <mat-error *ngIf="minMoney.hasError('min')"> Please etner greater than 0 Money!</mat-error>
+              <mat-error *ngIf="minMoney.hasError('pattern')">Please enter Only number</mat-error>
+            </mat-form-field>
+            <button [disabled]='!MinMoney.valid' type="submit" mat-raised-button color="primary" class="form-button">Submit</button>
+          </form>
+        </mdb-card-body>
+      </mdb-card>
+      <br>
+      <br>
+    </div>
+
+    <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
+      <mdb-card class="signin-card">
+
+        <mdb-card-body class="card-basic-content">
+            <!--Name-->
+          <mdb-card-title>
+              <h4>Add Max Money</h4>
+          </mdb-card-title>
+          <hr>
+          <form class="example-form" [formGroup]="MaxMoney" (ngSubmit)="onSubmitMaxMoney()" novalidate>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Max Money" [formControl]="maxMoney">
+              <mat-hint>Enter Max Money!</mat-hint>
+              <mat-error *ngIf="maxMoney.hasError('required')">Please etner Max Money!</mat-error>
+              <mat-error *ngIf="maxMoney.hasError('max')">Please etner less than 500000 Money!</mat-error>
+              <mat-error *ngIf="maxMoney.hasError('min')"> Please etner greater than 0 Money!</mat-error>
+              <mat-error *ngIf="maxMoney.hasError('pattern')">Please enter Only number</mat-error>
+            </mat-form-field>
+            <button [disabled]='!MaxMoney.valid' type="submit" mat-raised-button color="primary" class="form-button">Submit</button>
+          </form>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+  </div>
+</div>
